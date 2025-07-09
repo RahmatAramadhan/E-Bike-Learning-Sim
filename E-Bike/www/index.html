@@ -1,50 +1,109 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
-            https://cordova.apache.org/docs/en/latest/
-        Some notes:
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta name="color-scheme" content="light dark">
-        <link rel="stylesheet" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1 class="title">ELECTRIC VEHICLE SIMULATOR</h1>
+    <div class="container">
+        <section class="top">
+            <h2>Monitor</h2>
+            <div class="monitor">
+                <div class="screen"></div>
             </div>
-        </div>
-        <script src="cordova.js"></script>
-        <script src="js/index.js"></script>
-    </body>
+        </section>
+        <section class="mid">
+            <div class="bldc-motor">
+                <h2>BLDC MOTOR</h2>
+                <div class="motor-status">
+                    <p>Status: Running</p>
+                    <p>Speed: 3000 RPM</p>
+                </div>      
+            </div>
+
+            <div class="controller">
+                <h2>Controller</h2>
+                <div class="controller-status">
+                    <p>Status: Active</p>
+                    <p>Temperature: 45°C</p>
+                </div>
+            </div>
+
+            <div class="tpg">
+                <div class="transmisi">
+                    <h2>Transmission</h2>
+                    <p>Gear: 1</p>
+                </div>
+                <div class="pedal-gas">
+                    <h2>Pedal Gas</h2>
+                    <div class="pedal">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mid-2">
+            <div class="indikator">
+                <h2>Indikator</h2>
+                <div class="indicator-status">
+                    
+                </div>
+            </div>
+
+            <div class="kontraktor">
+                <h2>Kontraktor</h2>
+                <div class="contractor-status">
+                    <p>Status: Closed</p>
+                </div>
+            </div>
+
+            <div class="battery-pack">
+                <h2>Battery Pack</h2>
+                <div class="battery-status">
+                    <p>Voltage: 400V</p>
+                    <p>Current: 100A</p>
+                </div>
+            </div>
+
+            <div class="charge">
+                <h2>Charge</h2>
+                <div class="charge-status">
+                    <p>Charging Rate: 50kW</p>
+                    <p>Time Remaining: 1 hour</p>
+                </div>
+            </div>
+
+            <div class="fuse">
+                <h2>Fuse</h2>
+                <div class="fuse-status">
+                    <p>Status: OK</p>
+                </div>
+            </div>
+
+            <div class="dc-converter">
+                <h2>DC Converter</h2>
+                <div class="converter-status">
+                    <p>Output Voltage: 12V</p>
+                    <p>Output Current: 10A</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom">
+            <div class="wheel">
+                <h2>Wheel</h2>
+            </div>
+            <div class="battery">
+                <h2>Battery</h2>
+            </div>
+            <div class="switch-key">
+                <h2>Kunci Kontak</h2>
+            </div>
+        </section>
+    </div>
+</body>
 </html>
