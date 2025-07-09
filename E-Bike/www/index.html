@@ -4,42 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    
+      
 </head>
 <body>
     <h1 class="title">ELECTRIC VEHICLE SIMULATOR</h1>
     <div class="container">
         <section class="top">
-            <h2>Monitor</h2>
+            <h2>MONITOR</h2>
             <div class="monitor">
-                <div class="screen"></div>
+              <div class="screen">
+                <div class="kecepatan">00</div>
+                <div class="battery-container">
+                  <div class="battery-diagram">
+                    <div class="bar full"></div>
+                    <div class="bar full"></div>
+                    <div class="bar medium"></div>
+                    <div class="bar empty"></div>
+                  </div>
+                </div>
+                <div class="battery-capacity">50.0</div>
+              </div>
             </div>
-        </section>
+          </section>                  
         <section class="mid">
             <div class="bldc-motor">
                 <h2>BLDC MOTOR</h2>
-                <div class="motor-status">
-                    <p>Status: Running</p>
-                    <p>Speed: 3000 RPM</p>
-                </div>      
+                <div class="motorcontain">
+                    <div class="motor-status status-box">
+                        <p>Status: Running</p>
+                        <p>Speed: 3000 RPM</p>
+                    </div>  
+                    <div class="pin-motor">
+                        <div class="motor-pin">
+                            <div id="motor+" class="pin" data-group="+" style="top: 80px; left: 10px;">+</div>
+                            <div id="motorA" class="pin" data-group="A" style="top: 80px; left: 10px;">A</div>
+                            <div id="motorB" class="pin" data-group="B" style="top: 120px; left: 10px;">B</div>
+                            <div id="motorC" class="pin" data-group="C" style="top: 160px; left: 10px;">C</div>
+                            <div id="motor-" class="pin" data-group="-" style="top: 200px; left: 10px;">-</div> 
+                        </div>  
+                        <div class="motor-pin2">
+                            <div id="motorU" class="pin" data-group="U" style="top: 120px; left: 10px;">U</div>
+                            <div id="motorV" class="pin" data-group="V" style="top: 160px; left: 10px;">V</div>
+                            <div id="motorW" class="pin" data-group="W" style="top: 200px; left: 10px;">W</div> 
+                        </div> 
+                    </div>
+                </div>
             </div>
 
             <div class="controller">
                 <h2>Controller</h2>
-                <div class="controller-status">
-                    <p>Status: Active</p>
-                    <p>Temperature: 45°C</p>
-                </div>
+                <div class="controller-wrapper">
+                    <div class="controller-pin-wrapper">
+                        <div class="controller-pin">
+                            <div id="controller+" class="pin" data-group="+" style="top: 80px; left: 10px;">+</div>
+                            <div id="controllerA" class="pin" data-group="A" style="top: 80px; left: 10px;">A</div>
+                            <div id="controllerB" class="pin" data-group="B" style="top: 120px; left: 10px;">B</div>
+                            <div id="controllerC" class="pin" data-group="C" style="top: 160px; left: 10px;">C</div>
+                            <div id="controller-" class="pin" data-group="-" style="top: 200px; left: 10px;">-</div> 
+                        </div> 
+                        <div class="controller-pin2">
+                            <div id="controllerU" class="pin" data-group="+" style="top: 80px; left: 10px;">U</div>
+                            <div id="controllerV" class="pin" data-group="A" style="top: 80px; left: 10px;">V</div>
+                            <div id="controllerW" class="pin" data-group="B" style="top: 120px; left: 10px;">W</div> 
+                        </div> 
+                    </div>
+                    <div class="controller-status status-box">
+                        <div class="controller-3d">
+
+                        </div>
+                    </div>
+                    <div class="controller-pin">
+                        <div id="controller+" class="pin" data-group="+" style="top: 80px; left: 10px;">+</div>
+                        <div id="controllerA" class="pin" data-group="A" style="top: 80px; left: 10px;">A</div>
+                        <div id="controllerB" class="pin" data-group="B" style="top: 120px; left: 10px;">B</div>
+                        <div id="controllerC" class="pin" data-group="C" style="top: 160px; left: 10px;">C</div>
+                        <div id="controller-" class="pin" data-group="-" style="top: 200px; left: 10px;">-</div> 
+                    </div> 
+                </div> 
             </div>
 
             <div class="tpg">
                 <div class="transmisi">
-                    <h2>Transmission</h2>
-                    <p>Gear: 1</p>
+                    <h2>Transmisi</h2>
+                    <div class="transmisi-status status-box">
+                        <p>Status: Engaged</p>
+                        <p>Gear: 1</p>
+                    </div>
                 </div>
                 <div class="pedal-gas">
                     <h2>Pedal Gas</h2>
-                    <div class="pedal">
+                    <div class="pedal-canvas status-box">
 
                     </div>
                 </div>
@@ -49,46 +106,38 @@
         <section class="mid-2">
             <div class="indikator">
                 <h2>Indikator</h2>
-                <div class="indicator-status">
+                <div class="indicator-status status-box">
                     
                 </div>
             </div>
 
-            <div class="kontraktor">
-                <h2>Kontraktor</h2>
-                <div class="contractor-status">
-                    <p>Status: Closed</p>
+            <div class="kontaktor">
+                <h2>Kontaktor</h2>
+                <div class="contactor-status status-box">
                 </div>
             </div>
 
             <div class="battery-pack">
                 <h2>Battery Pack</h2>
-                <div class="battery-status">
-                    <p>Voltage: 400V</p>
-                    <p>Current: 100A</p>
+                <div class="battery-status status-box">
                 </div>
             </div>
 
             <div class="charge">
                 <h2>Charge</h2>
-                <div class="charge-status">
-                    <p>Charging Rate: 50kW</p>
-                    <p>Time Remaining: 1 hour</p>
+                <div class="charge-status status-box">
                 </div>
             </div>
 
             <div class="fuse">
                 <h2>Fuse</h2>
-                <div class="fuse-status">
-                    <p>Status: OK</p>
+                <div class="fuse-status status-box">
                 </div>
             </div>
 
             <div class="dc-converter">
-                <h2>DC Converter</h2>
-                <div class="converter-status">
-                    <p>Output Voltage: 12V</p>
-                    <p>Output Current: 10A</p>
+                <h2>DC To DC Converter</h2>
+                <div class="converter-status status-box">
                 </div>
             </div>
         </section>
@@ -105,5 +154,11 @@
             </div>
         </section>
     </div>
+
+
+    <script src="js/three.min.js"></script>
+    <script src="js/GLTFLoader.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

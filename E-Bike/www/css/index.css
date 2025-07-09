@@ -1,0 +1,218 @@
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+  
+p {
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+
+.title {
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+}
+
+.top {
+    text-align: center;
+
+}
+
+.top h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+  
+.monitor {
+    width: 320px;
+    height: 220px;
+    background-color: #a6c6ec;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+  
+.screen {
+    width: 80%;
+    height: 80%;
+    background: linear-gradient(to bottom right, #111, #222);
+    border-radius: 20px;
+    box-shadow:
+      inset -2px -2px 5px rgba(255, 255, 255, 0.2),
+      inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+      2px 2px 6px rgba(0, 0, 0, 0.6);
+    position: relative;
+    color: #1aff00;
+    font-family: 'Orbitron', monospace;
+}
+  
+.kecepatan {
+    font-size: 64px;
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 5px;
+}
+  
+.battery-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+  
+.battery-diagram {
+    width: 20px;
+    height: 50px;
+    border: 2px solid #1aff00;
+    padding: 2px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2px;
+}
+  
+.bar {
+    height: 8px;
+    background-color: #222;
+}
+  
+.bar.full {
+    background-color: #1aff00;
+}
+  
+.bar.medium {
+    background-color: yellow;
+}
+  
+.bar.empty {
+    background-color: red;
+}
+  
+  
+
+
+.mid, .mid-2, .bottom{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.motorcontain, .controller-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pin {
+    width: 25px;
+    height: 25px;
+    background: #fff;
+    border: 2px solid black;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2;
+    margin-bottom: 5px;
+}
+  
+ /* Panel Status Umum */
+.status-box {
+    background-color: #a8bde4;
+    border: 2px solid #000;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+}
+  
+  /* BLDC Motor */
+.motor-status {
+    width: 300px;
+    height: 500px;
+    padding: 15px;
+}
+
+.motor-pin, .controller-pin {
+    margin-bottom: 50px;
+}
+  
+  /* Controller */
+.controller-status {
+    width: 400px;
+    height: 350px;
+    padding: 15px;
+}
+  
+  /* Transmisi */
+.transmisi h2, .pedal-gas h2 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+.transmisi-status {
+    width: 200px;
+    height: 250px;
+}
+  
+  /* Pedal Gas */
+.pedal-canvas {
+    width: 200px;
+    height: 150px;
+}
+  
+  /* TPG Group */
+.tpg {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.indicator-status {
+    width: 350px;
+    height: 150px;
+}
+
+.contactor-status {
+    width: 80px;
+    height: 130px;
+}
+
+.battery-status {
+    width: 250px;
+    height: 150px;
+}
+
+.charge-status,.fuse-status {
+    width: 60px;
+    height: 120px;
+}
+
+.converter-status {
+    width: 150px;
+    height: 200px;
+}
+
+
+  
+  
+  
