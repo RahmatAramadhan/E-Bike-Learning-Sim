@@ -36,16 +36,36 @@ document.querySelectorAll('.pin').forEach(pin => {
 
         const pin1 = selectedPin;
         const pin2 = pin;
+
+        if(pin1 === pin2){
+            const group = pin1.dataset.group;
+            const device = pin1.dataset.device;
+
+            if(device !== 'controller'){
+                if (connections[device][group]) {
+                    connections[device][group] = null;
+                    document.querySelectorAll(`.pin[data-group="${group}"]`).forEach(p => {
+                        p.classList.remove('connected');
+                    });       
+                }
+            }
+
+            pin1.classList.remove('selected');
+            selectedPin = null;
+            checkAllConnection();
+            return;
+        }
+
         const group1 = pin1.dataset.group;
         const group2 = pin2.dataset.group;
-        const id1 = pin1.dataset.device;
-        const id2 = pin2.dataset.device;
+        const device1 = pin1.dataset.device;
+        const device2 = pin2.dataset.device;
 
         const isSameGroup = group1 === group2 && pin1 !== pin2;
         const isControllerConnection = device1 === 'controller' || device2 === 'controller';
         const targetDevice = device1 === 'controller' ? device2 : device1;
 
-        if(isSameGroup || isControllerConnection === 'controller'){
+        if(!isSameGroup || !isControllerConnection || targetDevice === 'controller'){
             alert("Pin tidak cocok atau tidak berasal dari controller");
             pin1.classList.remove('selected');
             selectedPin = null;
@@ -57,7 +77,7 @@ document.querySelectorAll('.pin').forEach(pin => {
             pin1.classList.remove('connected');
             pin2.classList.remove('connected');
         }else{
-            conncetions[targetDevice][group1] = true;
+            connections[targetDevice][group1] = true;
             pin1.classList.add('connected');
             pin2.classList.add('connected');
         }
@@ -72,17 +92,17 @@ function checkAllConnection() {
     let overallConnections = true; 
 
     Object.keys(connections).forEach(component => {
-        const allTrue = Object.values(connections[component]).every(value => value !== true);
+        const allTrue = Object.values(connections[component]).every(value => value === true);
         allComponents[component] = allTrue;
         if (!allTrue) overallConnections = false;
     });
 
     const indicator = document.querySelector('.indicator-status');
-    if (allConnected) {
+    if (overallConnections) {
         indicator.textContent = "All motors connected";
         indicator.style.backgroundColor = "limegreen";
     }else{
-        indicator.textContent = "Not all motors connected";
+        indicator.textContent = allComponents.motor;
         indicator.style.backgroundColor = "red";
     }
 }
