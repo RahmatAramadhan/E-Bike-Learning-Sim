@@ -58,7 +58,8 @@ body {
   .transmisi-wrapper,
   .pedal-gas-wrapper,
   .tpg-wrapper,
-  .bms-wrapper {
+  .bms-wrapper,
+  .converter-wrapper {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -163,8 +164,23 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     transition: background-color 0.2s, transform 0.2s;
   }
+
+  .pin-bms {
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border: 1.5px solid #555;
+    color: #222;
+    font-weight: bold;
+    border-radius: 50%;
+    line-height: 16px;
+    font-size: 7px;
+    box-shadow: 0 0.5px 2px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s, transform 0.2s;
+  }
   
-  .pin:hover {
+  
+  .pin:hover, .pin-bms:hover {
     background-color: #dfefff;
     transform: scale(1.1);
     cursor: pointer;
@@ -173,7 +189,9 @@ body {
   #controllerSPORT,
   #transmisiSPORT,
   #controllerPlus48V,
-  #controllerMin48V {
+  #controllerMin48V,
+  #converterPlus12V,
+  #converterPlus48V{
     font-size: 6px;
   }
   
@@ -210,7 +228,7 @@ body {
     padding: 15px;
   }
   
-  .controller-pin4, .bms-pin2 {
+  .controller-pin4, .bms-pin2, .battery-pin2 {
     display: flex;
     gap: 10px;
   }
@@ -272,7 +290,7 @@ body {
   .battery-status {
     width: 250px;
     height: 150px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
   }
   
   .bms-canvas img {
@@ -299,9 +317,17 @@ body {
     height: 300px;
   }
   
+  .battery, .switch-key, .wheel, .dc-converter, .charge, .fuse{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
   .battery-canvas {
     width: 600px;
     height: 200px;
+    margin-top: 5px;
   }
   
   .switch-canvas {

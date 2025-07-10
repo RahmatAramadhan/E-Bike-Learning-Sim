@@ -180,20 +180,20 @@
                     </div>
                 </div>
                 <div class="bms-pin2">
-                    <div id="bmsC" class="pin" data-group="C" data-device="bms" style="top: 120px; left: 10px;">C</div> 
-                    <div id="bmsP" class="pin" data-group="P" data-device="bms" style="top: 120px; left: 10px;">P</div> 
-                    <div id="bmsB" class="pin" data-group="B" data-device="bms" style="top: 120px; left: 10px;">B</div> 
-                    <div id="bmsC" class="pin" data-group="C" data-device="bms" style="top: 120px; left: 10px;">C</div> 
-                    <div id="bmsP" class="pin" data-group="P" data-device="bms" style="top: 120px; left: 10px;">P</div>
-                    <div id="bmsC" class="pin" data-group="C" data-device="bms" style="top: 120px; left: 10px;">C</div> 
-                    <div id="bmsP" class="pin" data-group="P" data-device="bms" style="top: 120px; left: 10px;">P</div> 
-                    <div id="bmsB" class="pin" data-group="B" data-device="bms" style="top: 120px; left: 10px;">B</div> 
-                    <div id="bmsC" class="pin" data-group="C" data-device="bms" style="top: 120px; left: 10px;">C</div> 
-                    <div id="bmsP" class="pin" data-group="P" data-device="bms" style="top: 120px; left: 10px;">P</div>
-                    <div id="bmsC" class="pin" data-group="C" data-device="bms" style="top: 120px; left: 10px;">C</div> 
-                    <div id="bmsP" class="pin" data-group="P" data-device="bms" style="top: 120px; left: 10px;">P</div> 
-                    <div id="bmsB" class="pin" data-group="B" data-device="bms" style="top: 120px; left: 10px;">B</div> 
-                    <div id="bmsC" class="pin" data-group="C" data-device="bms" style="top: 120px; left: 10px;">C</div>
+                    <div id="bmsS13" class="pin-bms" data-group="S13" data-device="bms" style="top: 120px; left: 10px;">S13</div> 
+                    <div id="bmsS12" class="pin-bms" data-group="S12" data-device="bms" style="top: 120px; left: 10px;">S12</div> 
+                    <div id="bmsS11" class="pin-bms" data-group="S11" data-device="bms" style="top: 120px; left: 10px;">S11</div> 
+                    <div id="bmsS10" class="pin-bms" data-group="S10" data-device="bms" style="top: 120px; left: 10px;">S10</div> 
+                    <div id="bmsS9" class="pin-bms" data-group="S9" data-device="bms" style="top: 120px; left: 10px;">S9</div>
+                    <div id="bmsS8" class="pin-bms" data-group="S8" data-device="bms" style="top: 120px; left: 10px;">S8</div> 
+                    <div id="bmsS7" class="pin-bms" data-group="S7" data-device="bms" style="top: 120px; left: 10px;">S7</div> 
+                    <div id="bmsS6" class="pin-bms" data-group="S6" data-device="bms" style="top: 120px; left: 10px;">S6</div> 
+                    <div id="bmsS5" class="pin-bms" data-group="S5" data-device="bms" style="top: 120px; left: 10px;">S5</div> 
+                    <div id="bmsS4" class="pin-bms" data-group="S4" data-device="bms" style="top: 120px; left: 10px;">S4</div>
+                    <div id="bmsS3" class="pin-bms" data-group="S3" data-device="bms" style="top: 120px; left: 10px;">S3</div> 
+                    <div id="bmsS2" class="pin-bms" data-group="S2" data-device="bms" style="top: 120px; left: 10px;">S2</div> 
+                    <div id="bmsS1" class="pin-bms" data-group="S1" data-device="bms" style="top: 120px; left: 10px;">S1</div> 
+                    <div id="bmsS0" class="pin-bms" data-group="S0" data-device="bms" style="top: 120px; left: 10px;">S0</div>
                 </div>
             </div>
 
@@ -211,7 +211,14 @@
 
             <div class="dc-converter">
                 <h2>DC To DC Converter</h2>
-                <div class="converter-status status-box">
+                <div class="converter-wrapper">
+                    <div class="converter-pin">
+                        <div id="converterPlus12V" class="pin" data-group="+12V" data-device="converter" style="top: 120px; left: 10px;">+12V</div> 
+                        <div id="converterPlus48V" class="pin" data-group="+48V" data-device="converter" style="top: 120px; left: 10px;">+48V</div> 
+                        <div id="converterGND" class="pin" data-group="GND" data-device="converter" style="top: 120px; left: 10px;">GND</div> 
+                    </div>
+                    <div class="converter-status status-box">
+                    </div>
                 </div>
             </div>
         </section>
@@ -223,10 +230,27 @@
                 </div>
             </div>
             <div class="battery">
-                <h2>Battery</h2>
+                <div class="battery-pin2">
+                    <div id="batteryS13" class="pin-bms" data-group="S13" data-device="battery" style="top: 120px; left: 10px;">S13</div> 
+                    <div id="batteryS12" class="pin-bms" data-group="S12" data-device="battery" style="top: 120px; left: 10px;">S12</div> 
+                    <div id="batteryS11" class="pin-bms" data-group="S11" data-device="battery" style="top: 120px; left: 10px;">S11</div> 
+                    <div id="batteryS10" class="pin-bms" data-group="S10" data-device="battery" style="top: 120px; left: 10px;">S10</div> 
+                    <div id="batteryS9" class="pin-bms" data-group="S9" data-device="battery" style="top: 120px; left: 10px;">S9</div>
+                    <div id="batteryS8" class="pin-bms" data-group="S8" data-device="battery" style="top: 120px; left: 10px;">S8</div> 
+                    <div id="batteryS7" class="pin-bms" data-group="S7" data-device="battery" style="top: 120px; left: 10px;">S7</div> 
+                    <div id="batteryS6" class="pin-bms" data-group="S6" data-device="battery" style="top: 120px; left: 10px;">S6</div> 
+                    <div id="batteryS5" class="pin-bms" data-group="S5" data-device="battery" style="top: 120px; left: 10px;">S5</div> 
+                    <div id="batteryS4" class="pin-bms" data-group="S4" data-device="battery" style="top: 120px; left: 10px;">S4</div>
+                    <div id="batteryS3" class="pin-bms" data-group="S3" data-device="battery" style="top: 120px; left: 10px;">S3</div> 
+                    <div id="batteryS2" class="pin-bms" data-group="S2" data-device="battery" style="top: 120px; left: 10px;">S2</div> 
+                    <div id="batteryS1" class="pin-bms" data-group="S1" data-device="battery" style="top: 120px; left: 10px;">S1</div> 
+                    <div id="batteryS0" class="pin-bms" data-group="S0" data-device="battery" style="top: 120px; left: 10px;">S0</div>
+                </div>
+                
                 <div class="battery-canvas status-box">
 
                 </div>
+                <h2>Battery</h2>
             </div>
             <div class="switch-key">
                 <h2>Kunci Kontak</h2>
