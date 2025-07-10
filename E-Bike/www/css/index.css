@@ -1,52 +1,81 @@
-h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    text-align: center;
-}
+/* =======================
+   GLOBAL STYLES
+======================= */
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #f4f6fa;
+    color: #333;
+    transform-origin: top center;
+    height: 100vh;
+    margin: 0;
+  }
   
-p {
+  h2 {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+  
+  p {
     margin: 4px 0;
     font-size: 14px;
-}
-
-
-.title {
-    font-size: 2em;
-    color: #333;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px;
-}
-
-.top {
-    text-align: center;
-
-}
-
-.top h2 {
-    text-align: center;
-    margin-bottom: 10px;
-}
+  }
   
-.monitor {
+  .title {
+    font-size: 2.5em;
+    color: #1a1a1a;
+    margin: 10px 0;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* =======================
+     LAYOUT WRAPPERS
+  ======================= */
+  .container {
+    padding: 30px;
+    gap: 10px;
+    max-width: 100vw;
+    overflow: hidden;
+  }
+  
+  .top, .mid, .mid-2, .bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .motorcontain,
+  .controller-wrapper,
+  .monitor-wrapper,
+  .transmisi-wrapper,
+  .pedal-gas-wrapper,
+  .tpg-wrapper,
+  .bms-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  /* =======================
+     MONITOR
+  ======================= */
+  .monitor {
     width: 320px;
     height: 220px;
-    background-color: #a6c6ec;
-    border: 2px solid black;
-    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
-}
+  }
   
-.screen {
+  .screen {
     width: 80%;
     height: 80%;
     background: linear-gradient(to bottom right, #111, #222);
@@ -58,22 +87,22 @@ p {
     position: relative;
     color: #1aff00;
     font-family: 'Orbitron', monospace;
-}
+  }
   
-.kecepatan {
+  .kecepatan {
     font-size: 64px;
     text-align: center;
     margin-top: 20px;
     letter-spacing: 5px;
-}
+  }
   
-.battery-container {
+  .battery-container {
     position: absolute;
     bottom: 20px;
     left: 20px;
-}
+  }
   
-.battery-diagram {
+  .battery-diagram {
     width: 20px;
     height: 50px;
     border: 2px solid #1aff00;
@@ -81,138 +110,202 @@ p {
     display: flex;
     flex-direction: column-reverse;
     gap: 2px;
-}
+  }
   
-.bar {
+  .bar {
     height: 8px;
     background-color: #222;
-}
+    border-radius: 2px;
+  }
   
-.bar.full {
+  .bar.full {
     background-color: #1aff00;
-}
+  }
   
-.bar.medium {
+  .bar.medium {
     background-color: yellow;
-}
+  }
   
-.bar.empty {
+  .bar.empty {
     background-color: red;
-}
+  }
   
-  
-
-
-.mid, .mid-2, .bottom{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-    text-align: center;
-    padding: 20px;
-    flex-wrap: wrap;
-}
-
-.motorcontain, .controller-wrapper{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.pin {
-    width: 25px;
-    height: 25px;
-    background: #fff;
-    border: 2px solid black;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 25px;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 2;
-    margin-bottom: 5px;
-}
-  
- /* Panel Status Umum */
-.status-box {
-    background-color: #a8bde4;
-    border: 2px solid #000;
-    border-radius: 4px;
-    box-sizing: border-box;
+  /* =======================
+     STATUS BOX
+  ======================= */
+  .status-box {
+    background: #e7efff;
+    border: 1.5px solid #b0c4de;
+    border-radius: 10px;
     padding: 10px;
-    text-align: center;
-}
+    font-size: 0.8rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+  }
   
-  /* BLDC Motor */
-.motor-status {
+  .status-box:hover {
+    transform: scale(1.02);
+  }
+  
+  /* =======================
+     PIN (Connection Dots)
+  ======================= */
+  .pin {
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border: 2px solid #555;
+    color: #222;
+    font-weight: bold;
+    border-radius: 50%;
+    line-height: 24px;
+    font-size: 9px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  
+  .pin:hover {
+    background-color: #dfefff;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  
+  #controllerSPORT,
+  #transmisiSPORT,
+  #controllerPlus48V,
+  #controllerMin48V {
+    font-size: 6px;
+  }
+  
+  /* =======================
+     BLDC MOTOR
+  ======================= */
+  .motor-status {
     width: 300px;
     height: 500px;
     padding: 15px;
-}
-
-.motor-pin, .controller-pin {
-    margin-bottom: 50px;
-}
+  }
   
-  /* Controller */
-.controller-status {
+  .motor-pin,
+  .controller-pin,
+  .transmisi-pin,
+  .pedal-pin {
+    margin-bottom: 30px;
+  }
+  
+  /* =======================
+     CONTROLLER
+  ======================= */
+  .controller, 
+  .battery-pack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .controller-status {
     width: 400px;
     height: 350px;
     padding: 15px;
-}
+  }
   
-  /* Transmisi */
-.transmisi h2, .pedal-gas h2 {
+  .controller-pin4, .bms-pin2 {
+    display: flex;
+    gap: 10px;
+  }
+  
+  #controller-3d img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* =======================
+     TRANSMISI & PEDAL GAS
+  ======================= */
+  .transmisi h2,
+  .pedal-gas h2 {
     font-size: 16px;
     margin-bottom: 8px;
   }
   
-.transmisi-status {
+  .transmisi-status {
     width: 200px;
     height: 250px;
-}
+  }
   
-  /* Pedal Gas */
-.pedal-canvas {
+  .pedal-canvas {
     width: 200px;
     height: 150px;
-}
+  }
   
-  /* TPG Group */
-.tpg {
+  /* =======================
+     TPG (Battery Area)
+  ======================= */
+  .tpg {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.indicator-status {
+  }
+  
+  .indicator-status {
     width: 350px;
     height: 150px;
-}
-
-.contactor-status {
+  }
+  
+  .kontaktor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contactor-status {
     width: 80px;
     height: 130px;
-}
-
-.battery-status {
+    margin: 2px 0;
+  }
+  
+  .battery-status {
     width: 250px;
     height: 150px;
-}
-
-.charge-status,.fuse-status {
+    margin-bottom: 2px;
+  }
+  
+  .bms-canvas img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .charge-status,
+  .fuse-status {
     width: 60px;
     height: 120px;
-}
-
-.converter-status {
+  }
+  
+  .converter-status {
     width: 150px;
     height: 200px;
-}
-
-
+  }
   
+  /* =======================
+     BOTTOM SECTION
+  ======================= */
+  .wheel-status {
+    width: 400px;
+    height: 300px;
+  }
   
+  .battery-canvas {
+    width: 600px;
+    height: 200px;
+  }
+  
+  .switch-canvas {
+    width: 100px;
+    height: 150px;
+  }
   
