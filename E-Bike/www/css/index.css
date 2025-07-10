@@ -308,4 +308,12 @@ body {
     width: 100px;
     height: 150px;
   }
+
+  .pin.selected{
+    background-color: yellow;
+  }
+
+  .pin.connected {
+    background-color: green;
+  }  
   
