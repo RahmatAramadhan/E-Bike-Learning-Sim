@@ -7,7 +7,7 @@ const connections = {
     transmisi: {
         P: null, R: null, '1': null, '3': null, GND: null, SPORT: null
     },
-    gas: {
+    pedal: {
         '+5V': null, App: null, '-': null, REM: null, '12V': null
     },
     battery: {
@@ -22,7 +22,7 @@ const connections = {
 };
 
 const allComponents = {
-    motor : null, transmisi : null, gas : null,
+    motor : null, transmisi : null, pedal : null,
     converter : null, battery : null, kontak : null
 };
 
