@@ -158,12 +158,27 @@
                                     <p>R</p>
                                     <p>D</p>
                                 </div>
+                                <div class="transmisi-knob-area">
+                                    <button class="arrow-btn" id="leftBtn">◀</button>
+                                    <div class="transmisi-knob" id="knob">
+                                        <div class="knob-indicator"></div>
+                                    </div>
+                                    <button class="arrow-btn" id="rightBtn">▶</button>
+                                </div>
+                                
                             </div>
                             <div class="transmisiDown">
                                 <div class="transmisi-angka">
                                     <p>1</p>
                                     <p>2</p>
                                     <p>3</p>
+                                </div>
+                                <div class="triple-switch">
+                                    <div class="switch-track">
+                                        <div class="switch-knob" id="switchKnob">
+                                            <span id="knobLabel">I</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="red-button"></div>
                             </div>
@@ -197,7 +212,23 @@
             <div class="indikator">
                 <h2>Indikator</h2>
                 <div class="indicator-status status-box">
-                    
+                    <div class="lampu-rem">
+                        <h3>Lampu Rem</h3>
+                        <div class="led red on"></div>
+                    </div>
+                    <div class="monitor-arus">
+                        <h3>Arus dan Tegangan</h3>
+                        <div class="display">
+                            <div class="row">
+                                <div class="voltage">5.18</div>
+                                <div class="unit">V</div>
+                            </div>
+                                <div class="row">
+                                <div class="ampere">0.00</div>
+                                <div class="unit">A</div>
+                            </div> 
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -205,9 +236,12 @@
                 <h2>Kontaktor</h2>
                 <div id="kontaktorX" class="pin" data-group="X" style="top: 120px; left: 10px;">X</div> 
                 <div class="contactor-status status-box">
+                    <div class="mcb">
+                        <div class="switch" id="switch"></div>
+                        <div class="status" id="status">ON</div>
+                    </div>
                 </div>
                 <div id="kontaktorX" class="pin" data-group="X" style="top: 120px; left: 10px;">X</div> 
-
             </div>
 
             <div class="battery-pack">
@@ -301,10 +335,14 @@
                     <div id="batteryS0" class="pin" data-group="S0" data-device="battery" style="top: 120px; left: 10px;">S0</div>
                 </div>
                 
-                <div class="battery-canvas status-box">
-                    <div id="aset-img">
-                        <img src="../../Assets/img/Battery.png" alt="">
+                <div class="battery-wrapper">
+                    <div id="batteryBPlus" class="pin" data-group="B+" data-device="battery" style="top: 120px; left: 10px;">B+</div>
+                    <div class="battery-canvas status-box">
+                        <div id="aset-img">
+                            <img src="../../Assets/img/Battery.png" alt="">
+                        </div>
                     </div>
+                    <div id="batteryBMin" class="pin" data-group="B-" data-device="battery" style="top: 120px; left: 10px;">B-</div>
                 </div>
                 <h2>Battery</h2>
             </div>
@@ -314,7 +352,10 @@
                     <div id="kontakIG" class="pin" data-group="IG" data-device="kontak" style="top: 120px; left: 10px;">IG</div> 
                 </div>
                 <div class="switch-canvas status-box">
-
+                    <div class="key-switch">
+                        <div class="key-rotator" id="key-rotator"></div>
+                        <div class="key-status-text" id="key-status-text">LOCKED</div>
+                    </div>
                 </div>
                 <h2>Kunci Kontak</h2>
             </div>
@@ -326,5 +367,6 @@
     <script src="js/GLTFLoader.js" defer></script>
     <script src="js/OrbitControls.js" defer></script>
     <script src="js/index.js" defer></script>
+    <script src="js/Style.js" defer></script>
 </body>
 </html>
