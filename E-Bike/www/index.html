@@ -42,9 +42,33 @@
             <div class="bldc-motor">
                 <h2>BLDC MOTOR</h2>
                 <div class="motorcontain">
-                    <div class="motor-status status-box">
-                        <p>Status: Running</p>
-                        <p>Speed: 3000 RPM</p>
+                    <div class="motor-status status-box motor-table">
+                        <table>
+                            <tr>
+                                <th colspan="3" class="header-group">HALL SENSOR</th>
+                                <th colspan="3" class="header-group">KUMPARAN STATOR</th>
+                                <th rowspan="2" class="header-group">+</th>
+                                <th rowspan="2" class="header-group">−</th>
+                            </tr>
+                            <tr>
+                                <th>A</th>
+                                <th>B</th>
+                                <th>C</th>
+                                <th>U</th>
+                                <th>V</th>
+                                <th>W</th>
+                            </tr>
+                            <tr>
+                                <td class="circle-on"></td>
+                                <td class="circle-on"></td>
+                                <td class="circle-off"></td>
+                                <td class="circle-on"></td>
+                                <td class="circle-on"></td>
+                                <td class="circle-off"></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
                     </div>  
                     <div class="pin-motor">
                         <div class="motor-pin">
@@ -81,7 +105,7 @@
                         </div> 
                     </div>
                     <div class="controller-status status-box">
-                        <div id="controller-3d">
+                        <div id="aset-img">
                             <img src="../../Assets/img/controller.png" alt="">
                         </div>
                     </div>
@@ -92,7 +116,7 @@
                         <div id="controller1" class="pin" data-group="1" data-device="controller" style="top: 160px; left: 10px;">1</div>
                         <div id="controller3" class="pin" data-group="3" data-device="controller" style="top: 200px; left: 10px;">-3</div> 
                         <div id="controllerSPORT" class="pin" data-group="SPORT" data-device="controller" style="top: 80px; left: 10px;">SPORT</div>
-                        <div id="controller+5v" class="pin" data-group="+5v" data-device="controller" style="top: 80px; left: 10px;">+5v</div>
+                        <div id="controller+5v" class="pin" data-group="+5V" data-device="controller" style="top: 80px; left: 10px;">+5V</div>
                         <div id="controllerApp" class="pin" data-group="App" data-device="controller" style="top: 120px; left: 10px;">App</div>
                         <div id="controller-" class="pin" data-group="-" data-device="controller" style="top: 160px; left: 10px;">-</div>
                         <div id="controllerREM" class="pin" data-group="REM" data-device="controller" style="top: 200px; left: 10px;">REM</div>
@@ -123,8 +147,11 @@
                             </div> 
                         </div>
                         <div class="transmisi-status status-box">
-                            <p>Status: Engaged</p>
-                            <p>Gear: 1</p>
+                            <div>
+                                <p>R</p>
+                                <p>D</p>
+                                <p>P</p>
+                            </div>
                         </div>
 
                     </div>
@@ -172,6 +199,9 @@
                 <h2>Battery Pack</h2>
                 <div class="bms-wrapper">
                     <div class="battery-status status-box">
+                        <div id="aset-img">
+                            <img src="../../Assets/img/bms.png" alt="">
+                        </div>
                     </div>
                     <div class="bms-pin">
                         <div id="bmsC" class="pin" data-group="C" data-device="bms" style="top: 120px; left: 10px;">C</div> 
@@ -200,12 +230,18 @@
             <div class="charge">
                 <h2>Charge</h2>
                 <div class="charge-status status-box">
+                    <div id="aset-img">
+                        <img src="../../Assets/img/Charge.png" alt="">
+                    </div>
                 </div>
             </div>
 
             <div class="fuse">
                 <h2>Fuse</h2>
                 <div class="fuse-status status-box">
+                    <div id="aset-img">
+                        <img src="../../Assets/img/Fuse.png" alt="">
+                    </div>
                 </div>
             </div>
 
@@ -218,6 +254,9 @@
                         <div id="converterGND" class="pin" data-group="GND" data-device="converter" style="top: 120px; left: 10px;">GND</div> 
                     </div>
                     <div class="converter-status status-box">
+                        <div id="aset-img">
+                            <img src="../../Assets/img/DC-Converter.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -248,7 +287,9 @@
                 </div>
                 
                 <div class="battery-canvas status-box">
-
+                    <div id="aset-img">
+                        <img src="../../Assets/img/Battery.png" alt="">
+                    </div>
                 </div>
                 <h2>Battery</h2>
             </div>

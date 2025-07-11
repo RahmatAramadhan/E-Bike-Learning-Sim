@@ -233,13 +233,7 @@ body {
     gap: 10px;
   }
   
-  #controller-3d img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  }
+
   
   /* =======================
      TRANSMISI & PEDAL GAS
@@ -274,7 +268,7 @@ body {
     height: 150px;
   }
   
-  .kontaktor {
+  .kontaktor, .fuse {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -291,6 +285,7 @@ body {
     width: 250px;
     height: 150px;
     margin-bottom: 5px;
+    padding: 5px;
   }
   
   .bms-canvas img {
@@ -342,4 +337,58 @@ body {
   .pin.connected {
     background-color: green;
   }  
+  
+  .motor-table table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid #000;
+  }
+  
+  .motor-table th,
+  .motor-table td {
+    font-size: 14px;
+    padding: 6px;
+    border: 1px solid #000;
+    text-align: center;
+  }
+  
+  .motor-table th {
+    background-color: #dde6f0;
+    font-weight: bold;
+  }
+  
+  .motor-table .circle-on::before {
+    content: "⨂";
+    font-size: 16px;
+    color: #000;
+  }
+  
+  .motor-table .circle-off::before {
+    content: "";
+  }
+  
+  
+  .motor-table .circle-off::before {
+    content: "";
+  }
+
+  #aset-img {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #aset-img img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+  
   
