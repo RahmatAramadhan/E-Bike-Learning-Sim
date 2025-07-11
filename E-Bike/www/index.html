@@ -17,16 +17,16 @@
                 <h2>MONITOR</h2>
                 <div class="monitor-wrapper">
                     <div class="monitor status-box">
-                      <div class="screen">
-                        <div class="kecepatan">00</div>
-                        <div class="battery-container">
-                          <div class="battery-diagram">
-                            <div class="bar full"></div>
-                            <div class="bar full"></div>
-                            <div class="bar medium"></div>
-                            <div class="bar empty"></div>
-                          </div>
-                        </div>
+                        <div class="screen">
+                            <div class="kecepatan">00</div>
+                            <div class="battery-container">
+                                <div class="battery-diagram">
+                                    <div class="bar full"></div>
+                                    <div class="bar full"></div>
+                                    <div class="bar medium"></div>
+                                    <div class="bar empty"></div>
+                                </div>
+                            </div>
                         <div class="battery-capacity">50.0</div>
                       </div>
                     </div>
@@ -42,34 +42,40 @@
             <div class="bldc-motor">
                 <h2>BLDC MOTOR</h2>
                 <div class="motorcontain">
-                    <div class="motor-status status-box motor-table">
-                        <table>
-                            <tr>
-                                <th colspan="3" class="header-group">HALL SENSOR</th>
-                                <th colspan="3" class="header-group">KUMPARAN STATOR</th>
-                                <th rowspan="2" class="header-group">+</th>
-                                <th rowspan="2" class="header-group">−</th>
-                            </tr>
-                            <tr>
-                                <th>A</th>
-                                <th>B</th>
-                                <th>C</th>
-                                <th>U</th>
-                                <th>V</th>
-                                <th>W</th>
-                            </tr>
-                            <tr>
-                                <td class="circle-on"></td>
-                                <td class="circle-on"></td>
-                                <td class="circle-off"></td>
-                                <td class="circle-on"></td>
-                                <td class="circle-on"></td>
-                                <td class="circle-off"></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                    <div class="motor-status status-box">
+                        <table class="motor-table">
+                        <tr>
+                            <th colspan="3" class="header-group">HALL SENSOR</th>
+                            <th colspan="3" class="header-group">KUMPARAN STATOR</th>
+                        </tr>
+                        <tr>
+                            <th>A</th>
+                            <th>B</th>
+                            <th>C</th>
+                            <th>U</th>
+                            <th>V</th>
+                            <th>W</th>
+                        </tr>
+                        <tr>
+                            <td><div class="led green on"></div></td>
+                            <td><div class="led green on"></div></td>
+                            <td><div class="led off"></div></td>
+                            <td><div class="led red on"></div></td>
+                            <td><div class="led red on"></div></td>
+                            <td><div class="led red off"></div></td>
+                            <th>+</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><div class="led yellow on"></div></td>
+                            <td><div class="led yellow on"></div></td>
+                            <td><div class="led yellow on"></div></td>
+                            <th>-</th>
+                        </tr>
                         </table>
-                    </div>  
+                    </div>
                     <div class="pin-motor">
                         <div class="motor-pin">
                             <div id="motor+" class="pin" data-group="+" data-device="motor" style="top: 80px; left: 10px;">+</div>
@@ -86,7 +92,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="controller">
                 <h2>Controller</h2>
                 <div class="controller-wrapper">
@@ -147,10 +152,20 @@
                             </div> 
                         </div>
                         <div class="transmisi-status status-box">
-                            <div>
-                                <p>R</p>
-                                <p>D</p>
-                                <p>P</p>
+                            <div class="transmisiUp">
+                                <div class="transmisi-huruf">
+                                    <p>P</p>
+                                    <p>R</p>
+                                    <p>D</p>
+                                </div>
+                            </div>
+                            <div class="transmisiDown">
+                                <div class="transmisi-angka">
+                                    <p>1</p>
+                                    <p>2</p>
+                                    <p>3</p>
+                                </div>
+                                <div class="red-button"></div>
                             </div>
                         </div>
 
@@ -210,20 +225,20 @@
                     </div>
                 </div>
                 <div class="bms-pin2">
-                    <div id="bmsS13" class="pin-bms" data-group="S13" data-device="bms" style="top: 120px; left: 10px;">S13</div> 
-                    <div id="bmsS12" class="pin-bms" data-group="S12" data-device="bms" style="top: 120px; left: 10px;">S12</div> 
-                    <div id="bmsS11" class="pin-bms" data-group="S11" data-device="bms" style="top: 120px; left: 10px;">S11</div> 
-                    <div id="bmsS10" class="pin-bms" data-group="S10" data-device="bms" style="top: 120px; left: 10px;">S10</div> 
-                    <div id="bmsS9" class="pin-bms" data-group="S9" data-device="bms" style="top: 120px; left: 10px;">S9</div>
-                    <div id="bmsS8" class="pin-bms" data-group="S8" data-device="bms" style="top: 120px; left: 10px;">S8</div> 
-                    <div id="bmsS7" class="pin-bms" data-group="S7" data-device="bms" style="top: 120px; left: 10px;">S7</div> 
-                    <div id="bmsS6" class="pin-bms" data-group="S6" data-device="bms" style="top: 120px; left: 10px;">S6</div> 
-                    <div id="bmsS5" class="pin-bms" data-group="S5" data-device="bms" style="top: 120px; left: 10px;">S5</div> 
-                    <div id="bmsS4" class="pin-bms" data-group="S4" data-device="bms" style="top: 120px; left: 10px;">S4</div>
-                    <div id="bmsS3" class="pin-bms" data-group="S3" data-device="bms" style="top: 120px; left: 10px;">S3</div> 
-                    <div id="bmsS2" class="pin-bms" data-group="S2" data-device="bms" style="top: 120px; left: 10px;">S2</div> 
-                    <div id="bmsS1" class="pin-bms" data-group="S1" data-device="bms" style="top: 120px; left: 10px;">S1</div> 
-                    <div id="bmsS0" class="pin-bms" data-group="S0" data-device="bms" style="top: 120px; left: 10px;">S0</div>
+                    <div id="bmsS13" class="pin" data-group="S13" data-device="bms" style="top: 120px; left: 10px;">S13</div> 
+                    <div id="bmsS12" class="pin" data-group="S12" data-device="bms" style="top: 120px; left: 10px;">S12</div> 
+                    <div id="bmsS11" class="pin" data-group="S11" data-device="bms" style="top: 120px; left: 10px;">S11</div> 
+                    <div id="bmsS10" class="pin" data-group="S10" data-device="bms" style="top: 120px; left: 10px;">S10</div> 
+                    <div id="bmsS9" class="pin" data-group="S9" data-device="bms" style="top: 120px; left: 10px;">S9</div>
+                    <div id="bmsS8" class="pin" data-group="S8" data-device="bms" style="top: 120px; left: 10px;">S8</div> 
+                    <div id="bmsS7" class="pin" data-group="S7" data-device="bms" style="top: 120px; left: 10px;">S7</div> 
+                    <div id="bmsS6" class="pin" data-group="S6" data-device="bms" style="top: 120px; left: 10px;">S6</div> 
+                    <div id="bmsS5" class="pin" data-group="S5" data-device="bms" style="top: 120px; left: 10px;">S5</div> 
+                    <div id="bmsS4" class="pin" data-group="S4" data-device="bms" style="top: 120px; left: 10px;">S4</div>
+                    <div id="bmsS3" class="pin" data-group="S3" data-device="bms" style="top: 120px; left: 10px;">S3</div> 
+                    <div id="bmsS2" class="pin" data-group="S2" data-device="bms" style="top: 120px; left: 10px;">S2</div> 
+                    <div id="bmsS1" class="pin" data-group="S1" data-device="bms" style="top: 120px; left: 10px;">S1</div> 
+                    <div id="bmsS0" class="pin" data-group="S0" data-device="bms" style="top: 120px; left: 10px;">S0</div>
                 </div>
             </div>
 
@@ -270,20 +285,20 @@
             </div>
             <div class="battery">
                 <div class="battery-pin2">
-                    <div id="batteryS13" class="pin-bms" data-group="S13" data-device="battery" style="top: 120px; left: 10px;">S13</div> 
-                    <div id="batteryS12" class="pin-bms" data-group="S12" data-device="battery" style="top: 120px; left: 10px;">S12</div> 
-                    <div id="batteryS11" class="pin-bms" data-group="S11" data-device="battery" style="top: 120px; left: 10px;">S11</div> 
-                    <div id="batteryS10" class="pin-bms" data-group="S10" data-device="battery" style="top: 120px; left: 10px;">S10</div> 
-                    <div id="batteryS9" class="pin-bms" data-group="S9" data-device="battery" style="top: 120px; left: 10px;">S9</div>
-                    <div id="batteryS8" class="pin-bms" data-group="S8" data-device="battery" style="top: 120px; left: 10px;">S8</div> 
-                    <div id="batteryS7" class="pin-bms" data-group="S7" data-device="battery" style="top: 120px; left: 10px;">S7</div> 
-                    <div id="batteryS6" class="pin-bms" data-group="S6" data-device="battery" style="top: 120px; left: 10px;">S6</div> 
-                    <div id="batteryS5" class="pin-bms" data-group="S5" data-device="battery" style="top: 120px; left: 10px;">S5</div> 
-                    <div id="batteryS4" class="pin-bms" data-group="S4" data-device="battery" style="top: 120px; left: 10px;">S4</div>
-                    <div id="batteryS3" class="pin-bms" data-group="S3" data-device="battery" style="top: 120px; left: 10px;">S3</div> 
-                    <div id="batteryS2" class="pin-bms" data-group="S2" data-device="battery" style="top: 120px; left: 10px;">S2</div> 
-                    <div id="batteryS1" class="pin-bms" data-group="S1" data-device="battery" style="top: 120px; left: 10px;">S1</div> 
-                    <div id="batteryS0" class="pin-bms" data-group="S0" data-device="battery" style="top: 120px; left: 10px;">S0</div>
+                    <div id="batteryS13" class="pin" data-group="S13" data-device="battery" style="top: 120px; left: 10px;">S13</div> 
+                    <div id="batteryS12" class="pin" data-group="S12" data-device="battery" style="top: 120px; left: 10px;">S12</div> 
+                    <div id="batteryS11" class="pin" data-group="S11" data-device="battery" style="top: 120px; left: 10px;">S11</div> 
+                    <div id="batteryS10" class="pin" data-group="S10" data-device="battery" style="top: 120px; left: 10px;">S10</div> 
+                    <div id="batteryS9" class="pin" data-group="S9" data-device="battery" style="top: 120px; left: 10px;">S9</div>
+                    <div id="batteryS8" class="pin" data-group="S8" data-device="battery" style="top: 120px; left: 10px;">S8</div> 
+                    <div id="batteryS7" class="pin" data-group="S7" data-device="battery" style="top: 120px; left: 10px;">S7</div> 
+                    <div id="batteryS6" class="pin" data-group="S6" data-device="battery" style="top: 120px; left: 10px;">S6</div> 
+                    <div id="batteryS5" class="pin" data-group="S5" data-device="battery" style="top: 120px; left: 10px;">S5</div> 
+                    <div id="batteryS4" class="pin" data-group="S4" data-device="battery" style="top: 120px; left: 10px;">S4</div>
+                    <div id="batteryS3" class="pin" data-group="S3" data-device="battery" style="top: 120px; left: 10px;">S3</div> 
+                    <div id="batteryS2" class="pin" data-group="S2" data-device="battery" style="top: 120px; left: 10px;">S2</div> 
+                    <div id="batteryS1" class="pin" data-group="S1" data-device="battery" style="top: 120px; left: 10px;">S1</div> 
+                    <div id="batteryS0" class="pin" data-group="S0" data-device="battery" style="top: 120px; left: 10px;">S0</div>
                 </div>
                 
                 <div class="battery-canvas status-box">
@@ -294,10 +309,14 @@
                 <h2>Battery</h2>
             </div>
             <div class="switch-key">
-                <h2>Kunci Kontak</h2>
+                <div class="kontak-pin">
+                    <div id="kontakPlus14V" class="pin" data-group="+14V" data-device="kontak" style="top: 120px; left: 10px;">+14V</div> 
+                    <div id="kontakIG" class="pin" data-group="IG" data-device="kontak" style="top: 120px; left: 10px;">IG</div> 
+                </div>
                 <div class="switch-canvas status-box">
 
                 </div>
+                <h2>Kunci Kontak</h2>
             </div>
         </section>
     </div>
