@@ -1,6 +1,9 @@
 let selectedPin = null;
 
 const connections = {
+    monitor: {
+        IG : null, LIN : null, '-' : null
+    },
     motor: {
         '+': null, '-': null, A: null, B: null, C: null, U: null, V: null, W: null
     },
@@ -8,10 +11,13 @@ const connections = {
         P: null, R: null, '1': null, '3': null, GND: null, SPORT: null
     },
     pedal: {
-        '+5V': null, App: null, '-': null, REM: null, '12V': null
+        '+5V': null, App: null, '-': null, REM: null
     },
     battery: {
-        C: null, P: null, B: null
+        S0 : null, S1 : null, S2 : null, S3 : null, S4 : null, S5 : null, S6 : null, S7 : null, S8 : null, S9 : null, S10 : null, S11 : null, S12 : null, S13 : null
+    },
+    bms: {
+        S0 : null, S1 : null, S2 : null, S3 : null, S4 : null, S5 : null, S6 : null, S7 : null, S8 : null, S9 : null, S10 : null, S11 : null, S12 : null, S13 : null
     },
     converter: {
         '+48V': null, '-48V': null
@@ -22,7 +28,7 @@ const connections = {
 };
 
 const allComponents = {
-    motor : null, transmisi : null, pedal : null,
+    monitor : null, motor : null, transmisi : null, pedal : null,
     converter : null, battery : null, kontak : null
 };
 
@@ -61,11 +67,12 @@ document.querySelectorAll('.pin').forEach(pin => {
         const device1 = pin1.dataset.device;
         const device2 = pin2.dataset.device;
 
-        const isSameGroup = group1 === group2 && pin1 !== pin2;
-        const isControllerConnection = device1 === 'controller' || device2 === 'controller';
+        const isSameGroup = group1 === group2;
+        const isControllerConnection = device1 === 'controller' || device2 === 'controller' || (device1 === 'bms' && device2 === 'battery') || (device1 === 'battery' && device2 === 'bms');
+        
         const targetDevice = device1 === 'controller' ? device2 : device1;
 
-        if(!isSameGroup || !isControllerConnection || targetDevice === 'controller'){
+        if(!isSameGroup || !isControllerConnection || (device1 === 'controller' && device2 === 'controller')) {
             alert("Pin tidak cocok atau tidak berasal dari controller");
             pin1.classList.remove('selected');
             selectedPin = null;
@@ -102,7 +109,7 @@ function checkAllConnection() {
         indicator.textContent = "All motors connected";
         indicator.style.backgroundColor = "limegreen";
     }else{
-        indicator.textContent = allComponents.motor;
+        indicator.textContent = "motor : " + allComponents.motor + "transmisi : " + allComponents.transmisi + "pedal : " +  allComponents.pedal + "converter : " + allComponents.converter + "battery : " + allComponents.battery + "kontak : " + allComponents.kontak ;
         indicator.style.backgroundColor = "red";
     }
 }
