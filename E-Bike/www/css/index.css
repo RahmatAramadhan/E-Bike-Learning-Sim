@@ -394,10 +394,35 @@ body {
   transform: translateY(2px);
 }
   
-  .pedal-canvas {
-    width: 200px;
-    height: 150px;
-  }
+.pedal-canvas {
+  width: 200px;
+  height: 150px;
+  overflow: hidden;       
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+}
+
+.pedal-button {
+  width: 100px;
+  height: 130px; 
+  background: linear-gradient(to bottom, #555, #222);
+  border: 4px solid #999;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.pedal-button:active {
+  transform: scale(0.95);
+  background: linear-gradient(to bottom, #333, #000);
+  box-shadow: inset 0 4px 6px rgba(0,0,0,0.5);
+}
+
   
   /* =======================
      TPG (Battery Area)

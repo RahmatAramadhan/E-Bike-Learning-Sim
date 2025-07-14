@@ -65,3 +65,49 @@ const switchKnob = document.getElementById('switchKnob');
     console.log("Mode:", labels[current]);
 });
 
+let scene, camera, renderer, mixer, model;
+const clock = new THREE.Clock();
+
+init();
+
+function init() {
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 1, 3);
+
+    const container = document.getElementById('wheel-cycle');
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement)
+
+    const light = new THREE.HemisphereLight(0xffffff, 0x444444);
+    scene.add(light);
+
+    const loader = new THREE.GLTFLoader();
+    loader.load('../../Assets/3d/Roda/Wheel.gltf', (gltf) => {
+      model = gltf.scene;
+      scene.add(model);
+      model.position.set(0, 0, 0);
+
+      // Setup animation
+      mixer = new THREE.AnimationMixer(model);
+      if (gltf.animations.length > 0) {
+        const action = mixer.clipAction(gltf.animations[0]);
+        document.getElementById('btnAnimate').onclick = () => {
+          action.reset();
+          action.play();
+        };
+      }
+    });
+
+    animate();
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    const delta = clock.getDelta();
+    if (mixer) mixer.update(delta);
+    renderer.render(scene, camera);
+}
+
+

@@ -101,7 +101,7 @@
                             <div id="controllerA" class="pin" data-group="A" data-device="controller" style="top: 80px; left: 10px;">A</div>
                             <div id="controllerB" class="pin" data-group="B" data-device="controller" style="top: 120px; left: 10px;">B</div>
                             <div id="controllerC" class="pin" data-group="C" data-device="controller" style="top: 160px; left: 10px;">C</div>
-                            <div id="controller-" class="pin" data-group="-" data-device="controller" style="top: 200px; left: 10px;">-</div> 
+                            <div id="controllerMinKiri" class="pin" data-group="-" data-device="controller" style="top: 200px; left: 10px;">-</div> 
                         </div> 
                         <div class="controller-pin2">
                             <div id="controllerU" class="pin" data-group="U" data-device="controller" style="top: 80px; left: 10px;">U</div>
@@ -123,7 +123,7 @@
                         <div id="controllerSPORT" class="pin" data-group="SPORT" data-device="controller" style="top: 80px; left: 10px;">SPORT</div>
                         <div id="controller+5v" class="pin" data-group="+5V" data-device="controller" style="top: 80px; left: 10px;">+5V</div>
                         <div id="controllerApp" class="pin" data-group="App" data-device="controller" style="top: 120px; left: 10px;">App</div>
-                        <div id="controller-" class="pin" data-group="-" data-device="controller" style="top: 160px; left: 10px;">-</div>
+                        <div id="controllerMinKanan" class="pin" data-group="-" data-device="controller" style="top: 160px; left: 10px;">-</div>
                         <div id="controllerREM" class="pin" data-group="REM" data-device="controller" style="top: 200px; left: 10px;">REM</div>
                         <div id="controllerIG" class="pin" data-group="IG" data-device="controller" style="top: 80px; left: 10px;">IG</div>
                         <div id="controllerGND" class="pin" data-group="GND" data-device="controller" style="top: 80px; left: 10px;">GND</div>
@@ -193,7 +193,7 @@
                             <div class="pedal-pin">
                                 <div id="pedal+5V" class="pin" data-group="+5V" data-device="pedal" style="top: 80px; left: 10px;">+5V</div>
                                 <div id="pedalApp" class="pin" data-group="App" data-device="pedal" style="top: 80px; left: 10px;">App</div>
-                                <div id="pedal-" class="pin" data-group="-" data-device="pedal" style="top: 80px; left: 10px;">-</div>
+                                <div id="pedalMin" class="pin" data-group="-" data-device="pedal" style="top: 80px; left: 10px;">-</div>
                             </div> 
                             <div class="pedal-pin2">
                                 <div id="pedalREM" class="pin" data-group="REM" data-device="pedal" style="top: 120px; left: 10px;">REM</div> 
@@ -201,7 +201,7 @@
                             </div>
                         </div>
                         <div class="pedal-canvas status-box">
-                            
+                            <button class="pedal-button">Gas</button>
                         </div>
                     </div>
                 </div>
@@ -314,7 +314,8 @@
         <section class="bottom">
             <div class="wheel">
                 <h2>Wheel</h2>
-                <div class="wheel-status status-box">
+                <div class="wheel-status status-box" id="wheel-cycle">
+
                 </div>
             </div>
             <div class="battery">
@@ -361,8 +362,6 @@
             </div>
         </section>
     </div>
-
-
     <script src="js/three.min.js" defer></script>
     <script src="js/GLTFLoader.js" defer></script>
     <script src="js/OrbitControls.js" defer></script>
