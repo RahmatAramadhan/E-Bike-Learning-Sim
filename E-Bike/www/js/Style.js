@@ -65,49 +65,97 @@ const switchKnob = document.getElementById('switchKnob');
     console.log("Mode:", labels[current]);
 });
 
-let scene, camera, renderer, mixer, model;
-const clock = new THREE.Clock();
+let mixer;
+let action;
+let speed = 0;
+const acceleration = 0.01;       // naiknya lebih cepat dari sebelumnya
+const deceleration = 0.008;      // turunnya juga agak cepat biar gak ngambang
+const maxSpeed = 3; 
+let isPressed = false;
 
-init();
+// === DOM ===
+const container = document.getElementById("wheel-cycle");
+const pedalBtn = document.getElementById("pedal-button");
+const kecepatanDiv = document.getElementById("kecepatan");
 
-function init() {
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 1, 3);
+// === SCENE ===
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#e7efff');
 
-    const container = document.getElementById('wheel-cycle');
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+// === CAMERA ===
+const camera = new THREE.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.1, 1000);
+camera.position.set(120, 20, 120);
+camera.lookAt(0, 0, 0);
+
+// === RENDERER ===
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(container.clientWidth, container.clientHeight);
+container.appendChild(renderer.domElement);
+
+// === LIGHT ===
+const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+dirLight.position.set(5, 10, 5);
+scene.add(dirLight);
+scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+
+// === MODEL ===
+const loader = new THREE.GLTFLoader();
+loader.setPath('../../Assets/3d/');
+loader.load('Roda.glb', (gltf) => {
+    const object = gltf.scene;
+    object.position.set(0, 0, 0);
+    object.rotation.y = -0.8;
+    object.scale.set(1, 1, 1);
+    scene.add(object);
+
+    // Ambil animasi dari Blender
+    if (gltf.animations.length > 0) {
+        mixer = new THREE.AnimationMixer(object);
+        action = mixer.clipAction(gltf.animations[0]);
+        action.play();
+        action.timeScale = 0;
+    }
+}, undefined, (error) => {
+    console.error('GLB Load Error:', error);
+});
+
+// === EVENT GAS BUTTON ===
+pedalBtn.addEventListener("mousedown", () => isPressed = true);
+pedalBtn.addEventListener("mouseup", () => isPressed = false);
+pedalBtn.addEventListener("mouseleave", () => isPressed = false);
+// Touch support
+pedalBtn.addEventListener("touchstart", () => isPressed = true);
+pedalBtn.addEventListener("touchend", () => isPressed = false);
+
+// === RESIZE HANDLING ===
+window.addEventListener("resize", () => {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
     renderer.setSize(container.clientWidth, container.clientHeight);
-    container.appendChild(renderer.domElement)
+});
 
-    const light = new THREE.HemisphereLight(0xffffff, 0x444444);
-    scene.add(light);
-
-    const loader = new THREE.GLTFLoader();
-    loader.load('../../Assets/3d/Roda/Wheel.gltf', (gltf) => {
-      model = gltf.scene;
-      scene.add(model);
-      model.position.set(0, 0, 0);
-
-      // Setup animation
-      mixer = new THREE.AnimationMixer(model);
-      if (gltf.animations.length > 0) {
-        const action = mixer.clipAction(gltf.animations[0]);
-        document.getElementById('btnAnimate').onclick = () => {
-          action.reset();
-          action.play();
-        };
-      }
-    });
-
-    animate();
-}
-
+// === ANIMASI LOOP ===
+const clock = new THREE.Clock();
 function animate() {
     requestAnimationFrame(animate);
+
     const delta = clock.getDelta();
     if (mixer) mixer.update(delta);
+
+    // Naik atau turun speed
+    if (isPressed) {
+        if (speed < maxSpeed) speed += acceleration;
+    } else {
+        if (speed > 0) speed -= deceleration;
+        if (speed < 0) speed = 0;
+    }
+
+    if (action) action.timeScale = speed;
+
+    // Tampilkan kecepatan (0–60 berdasarkan proporsi dari maxSpeed)
+    const displayedSpeed = Math.round((speed / maxSpeed) * 60);
+    kecepatanDiv.textContent = displayedSpeed.toString().padStart(2, "0");
+
     renderer.render(scene, camera);
 }
-
-
+animate();

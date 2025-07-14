@@ -2,339 +2,351 @@
    GLOBAL STYLES
 ======================= */
 body {
-    font-family: 'Orbitron', sans-serif;
-    background-color: #f4f6fa;
-    color: #333;
-    transform-origin: top center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  h2 {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-align: center;
-  }
-  
-  p {
-    margin: 4px 0;
-    font-size: 14px;
-  }
-  
-  .title {
-    font-size: 2.5em;
-    color: #1a1a1a;
-    margin: 10px 0;
-    text-align: center;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* =======================
-     LAYOUT WRAPPERS
-  ======================= */
-  .container {
-    padding: 30px;
-    gap: 10px;
-    max-width: 100vw;
-    overflow: hidden;
-  }
-  
-  .top, .mid, .mid-2, .bottom {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .motorcontain,
-  .controller-wrapper,
-  .monitor-wrapper,
-  .transmisi-wrapper,
-  .pedal-gas-wrapper,
-  .tpg-wrapper,
-  .bms-wrapper,
-  .converter-wrapper,
-  .kontak-pin,
-  .battery-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 5px;
-  }
-  
-  /* =======================
-     MONITOR
-  ======================= */
-  .monitor {
-    width: 320px;
-    height: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .screen {
-    width: 80%;
-    height: 80%;
-    background: linear-gradient(to bottom right, #111, #222);
-    border-radius: 20px;
-    box-shadow:
-      inset -2px -2px 5px rgba(255, 255, 255, 0.2),
-      inset 2px 2px 5px rgba(0, 0, 0, 0.5),
-      2px 2px 6px rgba(0, 0, 0, 0.6);
-    position: relative;
-    color: #1aff00;
-    font-family: 'Orbitron', monospace;
-  }
-  
-  .kecepatan {
-    font-size: 64px;
-    text-align: center;
-    margin-top: 20px;
-    letter-spacing: 5px;
-  }
-  
-  .battery-container {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-  }
-  
-  .battery-diagram {
-    width: 20px;
-    height: 50px;
-    border: 2px solid #1aff00;
-    padding: 2px;
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 2px;
-  }
-  
-  .bar {
-    height: 8px;
-    background-color: #222;
-    border-radius: 2px;
-  }
-  
-  .bar.full {
-    background-color: #1aff00;
-  }
-  
-  .bar.medium {
-    background-color: yellow;
-  }
-  
-  .bar.empty {
-    background-color: red;
-  }
-  
-  /* =======================
-     STATUS BOX
-  ======================= */
-  .status-box {
-    background: #e7efff;
-    border: 1.5px solid #b0c4de;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 0.8rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s;
-  }
-  
-  .status-box:hover {
-    transform: scale(1.02);
-  }
-  
-  /* =======================
-     PIN (Connection Dots)
-  ======================= */
-  .pin {
-    width: 24px;
-    height: 24px;
-    background: #fff;
-    border: 2px solid #555;
-    color: #222;
-    font-weight: bold;
-    border-radius: 50%;
-    line-height: 24px;
-    font-size: 9px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.2s, transform 0.2s;
-    margin-bottom: 2px;
-  }
-  
-  
-  .pin:hover {
-    background-color: #dfefff;
-    transform: scale(1.1);
-    cursor: pointer;
-  }
+  font-family: 'Orbitron', sans-serif;
+  background-color: #f4f6fa;
+  color: #333;
+  transform-origin: top center;
+  height: 100vh;
+  margin: 0;
+  transform: scale(0.6);
+}
 
-  .motor-pin, .controller-pin {
-    margin-bottom: 30px;
-  }
-  
-  #controllerSPORT,
-  #transmisiSPORT,
-  #controllerPlus48V,
-  #controllerMin48V,
-  #converterPlus12V,
-  #converterPlus48V{
-    font-size: 6px;
-  }
-  
-  /* =======================
-     BLDC MOTOR
-  ======================= */
-  .motor-status {
-    width: 300px;
-    height: 500px;
-    padding: 15px;
-  }
-  
-  .motor-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-  }
-  
-  .motor-table th {
-    padding: 5px;
-    font-size: 14px;
-  }
-  
-  .led {
-    width: 20px;
-    height: 20px;
-    margin: auto;
-    border-radius: 50%;
-    border: 2px solid #444;
-    background-color: #ccc; 
-  }
-  
-  .led.on.green {
-    background-color: limegreen;
-  }
-  
-  .led.on.red {
-    background-color: red;
-  }
-  
-  .led.on.yellow {
-    background-color: gold;
-  }
-  
-  .led.off {
-    background-color: #aaa;
-  }
-  
-  
-  /* =======================
-     CONTROLLER
-  ======================= */
-  .controller, 
-  .battery-pack {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .controller-status {
-    width: 400px;
-    height: 350px;
-    padding: 15px;
-  }
-  
-  .controller-pin4, .bms-pin2, .battery-pin2 {
-    display: flex;
-    gap: 10px;
-  }
-  
+#cable-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
 
-  
-  /* =======================
-     TRANSMISI & PEDAL GAS
-  ======================= */
-  .transmisi h2,
-  .pedal-gas h2 {
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-  
-  .transmisi-status {
-    width: 200px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .transmisi-huruf {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    margin-bottom: 20px;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .transmisi-knob-area {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .transmisi-knob-area {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .transmisi-knob {
-    width: 60px;
-    height: 60px;
-    background: #111;
-    border-radius: 50%;
-    position: relative;
-    box-shadow: inset 0 0 6px #000;
-    transition: transform 0.3s ease;
-  }
-  
-  .knob-indicator {
-    width: 4px;
-    height: 16px;
-    background: white;
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 2px;
-  }
-  
-  .arrow-btn {
-    font-size: 20px;
-    width: 30px;
-    height: 30px;
-    border: none;
-    background: #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-.transmisi-angka{
-    display: flex;
-    gap: 30px;
-    justify-content: center;
+h2 {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.detail {
+  padding: 10px 20px;
+  background-color: #1aff00;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.detail:hover {
+  background-color: #00e600;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+
+.title {
+  font-size: 2.5em;
+  color: #1a1a1a;
+  margin: 10px 0;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* =======================
+   LAYOUT WRAPPERS
+======================= */
+.container {
+  padding: 30px;
+  gap: 10px;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.top, .mid, .mid-2, .bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  text-align: center;
+}
+
+.motorcontain, .controller-wrapper, .monitor-wrapper, .transmisi-wrapper,
+.pedal-gas-wrapper, .tpg-wrapper, .bms-wrapper, .converter-wrapper,
+.kontak-pin, .battery-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.battery, .switch-key, .wheel, .dc-converter, .charge, .fuse,
+.kontaktor, .transmisiUp, .transmisiDown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =======================
+   STATUS BOX
+======================= */
+.status-box {
+  background: #e7efff;
+  border: 1.5px solid #b0c4de;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.8rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.status-box:hover {
+  transform: scale(1.02);
+}
+
+/* =======================
+   MONITOR
+======================= */
+.monitor {
+  width: 320px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen {
+  width: 80%;
+  height: 80%;
+  background: linear-gradient(to bottom right, #111, #222);
+  border-radius: 20px;
+  box-shadow:
+    inset -2px -2px 5px rgba(255, 255, 255, 0.2),
+    inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+    2px 2px 6px rgba(0, 0, 0, 0.6);
+  position: relative;
+  color: #1aff00;
+  font-family: 'Orbitron', monospace;
+}
+
+.kecepatan {
+  font-size: 64px;
+  text-align: center;
+  margin-top: 20px;
+  letter-spacing: 5px;
+}
+
+.battery-container {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.battery-diagram {
+  width: 20px;
+  height: 50px;
+  border: 2px solid #1aff00;
+  padding: 2px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+
+.bar {
+  height: 8px;
+  background-color: #222;
+  border-radius: 2px;
+}
+
+.bar.full {
+  background-color: #1aff00;
+}
+
+.bar.medium {
+  background-color: yellow;
+}
+
+.bar.empty {
+  background-color: red;
+}
+
+/* =======================
+   PIN (Connection Dots)
+======================= */
+.pin {
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border: 2px solid #555;
+  color: #222;
+  font-weight: bold;
+  border-radius: 50%;
+  line-height: 24px;
+  font-size: 9px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s, transform 0.2s;
+  margin-bottom: 2px;
+}
+
+.pin:hover {
+  background-color: #dfefff;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.pin.selected {
+  background-color: yellow;
+}
+
+.pin.connected {
+  background-color: green;
+}
+
+.motor-pin, .controller-pin {
+  margin-bottom: 30px;
+}
+
+#controllerSPORT,
+#transmisiSPORT,
+#controllerPlus48V,
+#controllerMin48V,
+#converterPlus12V,
+#converterPlus48V {
+  font-size: 6px;
+}
+
+/* =======================
+   MOTOR
+======================= */
+.motor-status {
+  width: 300px;
+  height: 500px;
+  padding: 15px;
+}
+
+.motor-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.motor-table th,
+.motor-table td {
+  font-size: 14px;
+  padding: 6px;
+  border: 1px solid #000;
+  text-align: center;
+}
+
+.motor-table th {
+  background-color: #dde6f0;
+  font-weight: bold;
+}
+
+.led {
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  border-radius: 50%;
+  border: 2px solid #444;
+  background-color: #ccc;
+}
+
+.led.on.green { background-color: limegreen; }
+.led.on.red { background-color: red; }
+.led.on.yellow { background-color: gold; }
+.led.off { background-color: #aaa; }
+
+/* =======================
+   CONTROLLER & BATTERY PACK
+======================= */
+.controller-status {
+  width: 400px;
+  height: 350px;
+  padding: 15px;
+}
+
+.controller-pin4,
+.bms-pin2,
+.battery-pin2 {
+  display: flex;
+  gap: 10px;
+}
+
+/* =======================
+   TRANSMISI & PEDAL GAS
+======================= */
+.transmisi h2,
+.pedal-gas h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.transmisi-status {
+  width: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+}
+
+.transmisi-huruf,
+.transmisi-angka {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.transmisi-knob-area {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.transmisi-knob {
+  width: 60px;
+  height: 60px;
+  background: #111;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: inset 0 0 6px #000;
+  transition: transform 0.3s ease;
+}
+
+.knob-indicator {
+  width: 4px;
+  height: 16px;
+  background: white;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.arrow-btn {
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: #ccc;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .triple-switch {
@@ -345,8 +357,7 @@ body {
   border-radius: 4px;
   position: relative;
   box-shadow: inset 0 0 4px #000;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .switch-track {
@@ -363,7 +374,6 @@ body {
   height: 28px;
   background: #eee;
   border-radius: 2px;
-  text-align: center;
   font-weight: bold;
   color: #a00;
   display: flex;
@@ -393,19 +403,19 @@ body {
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.6);
   transform: translateY(2px);
 }
-  
+
 .pedal-canvas {
   width: 200px;
   height: 150px;
-  overflow: hidden;       
+  overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;   
+  align-items: center;
 }
 
 .pedal-button {
   width: 100px;
-  height: 130px; 
+  height: 130px;
   background: linear-gradient(to bottom, #555, #222);
   border: 4px solid #999;
   border-radius: 12px;
@@ -423,29 +433,48 @@ body {
   box-shadow: inset 0 4px 6px rgba(0,0,0,0.5);
 }
 
-  
-  /* =======================
-     TPG (Battery Area)
-  ======================= */
-  .tpg {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .indicator-status {
-    width: 350px;
-    height: 150px;
-    display: flex ;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-.lampu-rem{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* =======================
+   OTHER COMPONENTS (SHORT)
+======================= */
+.battery-status {
+  width: 250px;
+  height: 150px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.charge-status, .fuse-status {
+  width: 60px;
+  height: 120px;
+}
+
+.converter-status {
+  width: 150px;
+  height: 200px;
+}
+
+.wheel-status {
+  width: 400px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  background: #e7efff;
+}
+
+.indicator-status {
+  width: 350px;
+  height: 150px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.lampu-rem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .display {
@@ -470,231 +499,116 @@ body {
   padding: 0 6px;
 }
 
-.voltage {
-  color: red;
-  font-size: 1.8rem;
+.voltage { color: red; font-size: 1.8rem; }
+.ampere { color: #00f; font-size: 1.8rem; }
+.unit { font-size: 1rem; margin-left: 4px; }
+
+.contactor-status {
+  width: 80px;
+  margin: 2px 0;
 }
 
-.ampere {
-  color: #00f;
-  font-size: 1.8rem;
+.mcb {
+  background: #f2f0eb;
+  border: 2px solid #aaa;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  position: relative;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.unit {
-  font-size: 1rem;
-  margin-left: 4px;
+.switch {
+  width: 40px;
+  height: 30px;
+  background: red;
+  border-radius: 4px;
+  box-shadow: inset 0 0 3px #0005;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-  .kontaktor, .fuse, .transmisiUp, .transmisiDown{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .contactor-status {
-    width: 80px;
-    margin: 2px 0;
-  }
-  
-  .mcb {
-    background: #f2f0eb;
-    border: 2px solid #aaa;
-    border-radius: 8px;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-    position: relative;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .switch {
-    width: 40px;
-    height: 30px;
-    background: red;
-    border-radius: 4px;
-    box-shadow: inset 0 0 3px #0005;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .switch.off {
-    transform: rotate(90deg);
-    background: #700;
-  }
-  
-  .status {
-    margin-top: 8px;
-    font-weight: bold;
-    text-align: center;
-    color: #333;
-  }
-  
-  
-  .battery-status {
-    width: 250px;
-    height: 150px;
-    margin-bottom: 5px;
-    padding: 5px;
-  }
-  
-  .bms-canvas img {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .charge-status,
-  .fuse-status {
-    width: 60px;
-    height: 120px;
-  }
-  
-  .converter-status {
-    width: 150px;
-    height: 200px;
-  }
-  
-  /* =======================
-     BOTTOM SECTION
-  ======================= */
-  .wheel-status {
-    width: 400px;
-    height: 300px;
-  }
-  
-  .battery, .switch-key, .wheel, .dc-converter, .charge, .fuse{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .battery-canvas {
-    width: 600px;
-    height: 200px;
-    margin-top: 5px;
-  }
-  
-  .switch-canvas {
-    width: 100px;
-    margin: 2px 0;
-  }
+.switch.off {
+  transform: rotate(90deg);
+  background: #700;
+}
 
-  .key-switch-container {
-    width: 80px;
-    margin: 2px 0;
-  }
-  
-  .key-switch {
-    background: #ddd;
-    border: 2px solid #999;
-    border-radius: 8px;
-    padding: 12px;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .key-rotator {
-    width: 18px;
-    height: 36px;
-    background: #444;
-    border-radius: 3px;
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    transform: rotate(0deg);
-    box-shadow: inset 0 0 2px #0007;
-  }
-  
-  .key-rotator::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 12px;
-    background: #222;
-    border-radius: 50%;
-    box-shadow: 0 0 2px #000;
-  }
-  
-  .key-rotator.unlocked {
-    transform: rotate(90deg);
-    background: #222;
-  }
-  
-  .key-status-text {
-    margin-top: 8px;
-    font-weight: bold;
-    text-align: center;
-    color: #333;
-  }
-  
+.status {
+  margin-top: 8px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
 
-  .pin.selected{
-    background-color: yellow;
-  }
+.key-switch-container {
+  width: 80px;
+  margin: 2px 0;
+}
 
-  .pin.connected {
-    background-color: green;
-  }  
-  
-  .motor-table table {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: collapse;
-    border: 1px solid #000;
-  }
-  
-  .motor-table th,
-  .motor-table td {
-    font-size: 14px;
-    padding: 6px;
-    border: 1px solid #000;
-    text-align: center;
-  }
-  
-  .motor-table th {
-    background-color: #dde6f0;
-    font-weight: bold;
-  }
-  
-  .motor-table .circle-on::before {
-    font-size: 16px;
-    color: #000;
-  }
-  
-  .motor-table .circle-off::before {
-    content: "";
-  }
-  
-  
-  .motor-table .circle-off::before {
-    content: "";
-  }
+.key-switch {
+  background: #ddd;
+  border: 2px solid #999;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  #aset-img {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #aset-img img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    display: block;
-  }
+.key-rotator {
+  width: 18px;
+  height: 36px;
+  background: #444;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  transform: rotate(0deg);
+  box-shadow: inset 0 0 2px #0007;
+}
 
+.key-rotator::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #222;
+  border-radius: 50%;
+  box-shadow: 0 0 2px #000;
+}
 
-  
-  
+.key-rotator.unlocked {
+  transform: rotate(90deg);
+  background: #222;
+}
+
+.key-status-text {
+  margin-top: 8px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+
+#aset-img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#aset-img img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}

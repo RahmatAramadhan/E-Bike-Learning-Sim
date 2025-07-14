@@ -18,7 +18,7 @@
                 <div class="monitor-wrapper">
                     <div class="monitor status-box">
                         <div class="screen">
-                            <div class="kecepatan">00</div>
+                            <div class="kecepatan" id="kecepatan">00</div>
                             <div class="battery-container">
                                 <div class="battery-diagram">
                                     <div class="bar full"></div>
@@ -27,7 +27,7 @@
                                     <div class="bar empty"></div>
                                 </div>
                             </div>
-                        <div class="battery-capacity">50.0</div>
+                        <div class="battery-capacity" id="baterai-capacity">50.0</div>
                       </div>
                     </div>
                     <div class="monitor-pin">
@@ -201,7 +201,7 @@
                             </div>
                         </div>
                         <div class="pedal-canvas status-box">
-                            <button class="pedal-button">Gas</button>
+                            <button id="pedal-button" class="pedal-button">Gas</button>
                         </div>
                     </div>
                 </div>
@@ -341,6 +341,9 @@
                     <div class="battery-canvas status-box">
                         <div id="aset-img">
                             <img src="../../Assets/img/Battery.png" alt="">
+                        </div>
+                        <div>
+                            <button id="battery-detail" class="detail">Rincian</button>
                         </div>
                     </div>
                     <div id="batteryBMin" class="pin" data-group="B-" data-device="battery" style="top: 120px; left: 10px;">B-</div>
