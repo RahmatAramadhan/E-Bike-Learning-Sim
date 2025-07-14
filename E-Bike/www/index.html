@@ -130,8 +130,8 @@
                     </div> 
                 </div> 
                 <div class="controller-pin4">
-                    <div id="controllerPlus48V" class="pin" data-group="+48V" data-device="controller" style="top: 80px; left: 10px;">+ 48V</div>
-                    <div id="controllerMin48V" class="pin" data-group="-48V" data-device="controller" style="top: 80px; left: 10px;">- 48V</div>
+                    <div id="controllerPlus48V" class="connected-pin red" data-group="+48V" data-device="controller" style="top: 80px; left: 10px;">+ 48V</div>
+                    <div id="controllerMin48V" class="connected-pin black" data-group="-48V" data-device="controller" style="top: 80px; left: 10px;">- 48V</div>
                 </div>
             </div>
 
@@ -197,7 +197,7 @@
                             </div> 
                             <div class="pedal-pin2">
                                 <div id="pedalREM" class="pin" data-group="REM" data-device="pedal" style="top: 120px; left: 10px;">REM</div> 
-                                <div id="pedal12V" class="pin" data-group="12V" data-device="pedal" style="top: 120px; left: 10px;">12V</div> 
+                                <div id="pedal12V" class="connected-pin red" data-group="12V" data-device="pedal" style="top: 120px; left: 10px;">12V</div> 
                             </div>
                         </div>
                         <div class="pedal-canvas status-box">
@@ -234,14 +234,14 @@
 
             <div class="kontaktor">
                 <h2>Kontaktor</h2>
-                <div id="kontaktorX" class="pin" data-group="X" style="top: 120px; left: 10px;">X</div> 
+                <div id="kontaktorPlus48V" class="connected-pin red" data-group="+48V" style="top: 120px; left: 10px;">+48V</div> 
                 <div class="contactor-status status-box">
                     <div class="mcb">
                         <div class="switch" id="switch"></div>
                         <div class="status" id="status">ON</div>
                     </div>
                 </div>
-                <div id="kontaktorX" class="pin" data-group="X" style="top: 120px; left: 10px;">X</div> 
+                <div id="kontaktorBPLus" class="connected-pin red" data-group="B+" style="top: 120px; left: 10px;">B+</div> 
             </div>
 
             <div class="battery-pack">
@@ -253,9 +253,9 @@
                         </div>
                     </div>
                     <div class="bms-pin">
-                        <div id="bmsC" class="pin" data-group="C" data-device="bms" style="top: 120px; left: 10px;">C</div> 
-                        <div id="bmsP" class="pin" data-group="P" data-device="bms" style="top: 120px; left: 10px;">P</div> 
-                        <div id="bmsB" class="pin" data-group="B" data-device="bms" style="top: 120px; left: 10px;">B</div> 
+                        <div id="bmsC" class="connected-pin black" data-group="C" data-device="bms" style="top: 120px; left: 10px;">C</div> 
+                        <div id="bmsP" class="connected-pin black" data-group="P" data-device="bms" style="top: 120px; left: 10px;">P</div> 
+                        <div id="bmsB" class="connected-pin blue" data-group="B" data-device="bms" style="top: 120px; left: 10px;">B</div> 
                     </div>
                 </div>
                 <div class="bms-pin2">
@@ -287,20 +287,22 @@
 
             <div class="fuse">
                 <h2>Fuse</h2>
+                <div id="fuse12V" class="connected-pin red" data-group="12V" style="top: 120px; left: 10px;">12V</div> 
                 <div class="fuse-status status-box">
                     <div id="aset-img">
                         <img src="../../Assets/img/Fuse.png" alt="">
                     </div>
                 </div>
+                <div id="fusePlus12V" class="connected-pin red" data-group="+12V" style="top: 120px; left: 10px;">+12V</div> 
             </div>
 
             <div class="dc-converter">
                 <h2>DC To DC Converter</h2>
                 <div class="converter-wrapper">
                     <div class="converter-pin">
-                        <div id="converterPlus12V" class="pin" data-group="+12V" data-device="converter" style="top: 120px; left: 10px;">+12V</div> 
-                        <div id="converterPlus48V" class="pin" data-group="+48V" data-device="converter" style="top: 120px; left: 10px;">+48V</div> 
-                        <div id="converterGND" class="pin" data-group="GND" data-device="converter" style="top: 120px; left: 10px;">GND</div> 
+                        <div id="converterPlus12V" class="connected-pin red" data-group="+12V" data-device="converter" style="top: 120px; left: 10px;">+12V</div> 
+                        <div id="converterPlus48V" class="connected-pin red" data-group="+48V" data-device="converter" style="top: 120px; left: 10px;">+48V</div> 
+                        <div id="converterGND" class="connected-pin black" data-group="GND" data-device="converter" style="top: 120px; left: 10px;">GND</div> 
                     </div>
                     <div class="converter-status status-box">
                         <div id="aset-img">
@@ -337,7 +339,7 @@
                 </div>
                 
                 <div class="battery-wrapper">
-                    <div id="batteryBPlus" class="pin" data-group="B+" data-device="battery" style="top: 120px; left: 10px;">B+</div>
+                    <div id="batteryBPlus" class="connected-pin red" data-group="B+" data-device="battery" style="top: 120px; left: 10px;">B+</div>
                     <div class="battery-canvas status-box">
                         <div id="aset-img">
                             <img src="../../Assets/img/Battery.png" alt="">
@@ -346,13 +348,13 @@
                             <button id="battery-detail" class="detail">Rincian</button>
                         </div>
                     </div>
-                    <div id="batteryBMin" class="pin" data-group="B-" data-device="battery" style="top: 120px; left: 10px;">B-</div>
+                    <div id="batteryBMin" class="connected-pin blue" data-group="B-" data-device="battery" style="top: 120px; left: 10px;">B-</div>
                 </div>
                 <h2>Battery</h2>
             </div>
             <div class="switch-key">
                 <div class="kontak-pin">
-                    <div id="kontakPlus14V" class="pin" data-group="+14V" data-device="kontak" style="top: 120px; left: 10px;">+14V</div> 
+                    <div id="kontakPlus48V" class="connected-pin red" data-group="+48V" data-device="kontak" style="top: 120px; left: 10px;">+48V</div> 
                     <div id="kontakIG" class="pin" data-group="IG" data-device="kontak" style="top: 120px; left: 10px;">IG</div> 
                 </div>
                 <div class="switch-canvas status-box">

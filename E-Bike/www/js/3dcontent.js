@@ -8,7 +8,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.set(0, 1, 4);
+camera.position.set(0, 1, 2);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(container.clientWidth, container.clientHeight);
@@ -55,7 +55,7 @@ function tambahSeri() {
   const yOffset = -row * spacingY;
   const zOffset = 0; 
 
-  loader.load('../../Assets/3d/Batteryglb.gltf', (gltf) => {
+  loader.load('../../../Assets/3d/Batteryglb.gltf', (gltf) => {
     const battery = gltf.scene.clone();
     battery.scale.set(0.5, 0.5, 0.5);
     battery.position.set(xOffset, yOffset, zOffset);
@@ -73,7 +73,11 @@ function tambahSeri() {
 }
 
 function tambahParalel() {
-  if (jumlahSeri === 0) return;
+  if (jumlahSeri === 0) {
+    tambahSeri(); 
+    setTimeout(() => tambahParalel(), 200); 
+    return;
+  }
 
   const currentSeri = jumlahSeri;
   const rowCount = Math.ceil(currentSeri / bateraiPerBaris);
@@ -85,7 +89,7 @@ function tambahParalel() {
     const xOffset = col * spacingX;
     const yOffset = -row * spacingY;
 
-    loader.load('Model/Batteryglb.gltf', (gltf) => {
+    loader.load('../../../Assets/3d/Batteryglb.gltf', (gltf) => {
       const battery = gltf.scene.clone();
       battery.scale.set(0.5, 0.5, 0.5);
       battery.position.set(xOffset, yOffset, zOffset);
@@ -123,14 +127,6 @@ window.addEventListener('resize', () => {
   renderer.setSize(container.clientWidth, container.clientHeight);
 });
 
-// Re-render canvas saat tab dibuka
-document.getElementById('rangkaian-tab').addEventListener('shown.bs.tab', () => {
-  const width = container.clientWidth;
-  const height = container.clientHeight;
-  camera.aspect = width / height;
-  camera.updateProjectionMatrix();
-  renderer.setSize(width, height);
-});
 
 // Buat global agar bisa diakses dari HTML onclick
 window.tambahSeri = tambahSeri;
