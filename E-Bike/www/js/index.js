@@ -1,3 +1,5 @@
+import { initRodaScene } from './Style.js';
+
 let selectedPin = null;
 
 const connections = {

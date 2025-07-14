@@ -63,116 +63,92 @@ switchKnob.addEventListener('click', () => {
 });
 
 // ========== ANIMASI RODA ==========
-let mixer;
-let action;
-let speed = 0;
-const acceleration = 0.01;
-const deceleration = 0.008;
-const maxSpeed = 3;
-let isPressed = false;
+export function initRodaScene(containerId, pedalButtonId, kecepatanId) {
+    
+    let mixer;
+    let action;
+    let speed = 0;
+    const acceleration = 0.01;
+    const deceleration = 0.008;
+    const maxSpeed = 3;
+    let isPressed = false;
 
-// DOM untuk animasi roda
-const container = document.getElementById("wheel-cycle");
-const pedalBtn = document.getElementById("pedal-button");
-const kecepatanDiv = document.getElementById("kecepatan");
+    const container = document.getElementById(containerId);
+    const pedalBtn = document.getElementById(pedalButtonId);
+    const kecepatanDiv = document.getElementById(kecepatanId);
 
-// Setup scene
-const scene = new THREE.Scene();
-scene.background = new THREE.Color('#e7efff');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#e7efff');
 
-// Kamera
-const camera = new THREE.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.1, 1000);
-camera.position.set(120, 20, 120);
-camera.lookAt(0, 0, 0);
+    const camera = new THREE.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.set(120, 20, 120);
+    camera.lookAt(0, 0, 0);
 
-// Renderer
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setSize(container.clientWidth, container.clientHeight);
-container.appendChild(renderer.domElement);
-
-// Pencahayaan
-const dirLight = new THREE.DirectionalLight(0xffffff, 1);
-dirLight.position.set(5, 10, 5);
-scene.add(dirLight);
-scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-
-// Load model roda
-const loader = new THREE.GLTFLoader();
-loader.setPath('../../Assets/3d/');
-loader.load('Roda.glb', (gltf) => {
-    const object = gltf.scene;
-    object.position.set(0, 0, 0);
-    object.rotation.y = -0.8;
-    object.scale.set(1, 1, 1);
-    scene.add(object);
-
-    if (gltf.animations.length > 0) {
-        mixer = new THREE.AnimationMixer(object);
-        action = mixer.clipAction(gltf.animations[0]);
-        action.play();
-        action.timeScale = 0;
-    }
-}, undefined, (error) => {
-    console.error('GLB Load Error:', error);
-});
-
-// Event tekan tombol pedal
-pedalBtn.addEventListener("mousedown", () => isPressed = true);
-pedalBtn.addEventListener("mouseup", () => isPressed = false);
-pedalBtn.addEventListener("mouseleave", () => isPressed = false);
-pedalBtn.addEventListener("touchstart", () => isPressed = true);
-pedalBtn.addEventListener("touchend", () => isPressed = false);
-
-// Responsive resize
-window.addEventListener("resize", () => {
-    camera.aspect = container.clientWidth / container.clientHeight;
-    camera.updateProjectionMatrix();
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
-});
+    container.appendChild(renderer.domElement);
 
-// Animasi render loop
-const clock = new THREE.Clock();
-function animate() {
-    requestAnimationFrame(animate);
-    const delta = clock.getDelta();
-    if (mixer) mixer.update(delta);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+    dirLight.position.set(5, 10, 5);
+    scene.add(dirLight);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
-    // Perubahan kecepatan
-    if (isPressed) {
-        if (speed < maxSpeed) speed += acceleration;
-    } else {
-        if (speed > 0) speed -= deceleration;
-        if (speed < 0) speed = 0;
+    const loader = new THREE.GLTFLoader();
+    loader.setPath('../../Assets/3d/');
+    loader.load('Roda.glb', (gltf) => {
+        const object = gltf.scene;
+        object.position.set(0, 0, 0);
+        object.rotation.y = -0.8;
+        object.scale.set(1, 1, 1);
+        scene.add(object);
+
+        if (gltf.animations.length > 0) {
+            mixer = new THREE.AnimationMixer(object);
+            action = mixer.clipAction(gltf.animations[0]);
+            action.play();
+            action.timeScale = 0;
+        }
+    }, undefined, (error) => {
+        console.error('GLB Load Error:', error);
+    });
+
+    // Tombol pedal
+    pedalBtn.addEventListener("mousedown", () => isPressed = true);
+    pedalBtn.addEventListener("mouseup", () => isPressed = false);
+    pedalBtn.addEventListener("mouseleave", () => isPressed = false);
+    pedalBtn.addEventListener("touchstart", () => isPressed = true);
+    pedalBtn.addEventListener("touchend", () => isPressed = false);
+
+    window.addEventListener("resize", () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+
+    const clock = new THREE.Clock();
+    function animate() {
+        requestAnimationFrame(animate);
+        const delta = clock.getDelta();
+        if (mixer) mixer.update(delta);
+
+        if (isPressed) {
+            if (speed < maxSpeed) speed += acceleration;
+        } else {
+            if (speed > 0) speed -= deceleration;
+            if (speed < 0) speed = 0;
+        }
+
+        if (action) action.timeScale = -speed;
+
+        const displayedSpeed = Math.round((speed / maxSpeed) * 60);
+        kecepatanDiv.textContent = displayedSpeed > 0 
+            ? displayedSpeed.toString().padStart(2, "0")
+            : "--"; // kondisi default saat kecepatan nol
+
+        renderer.render(scene, camera);
     }
 
-    if (action) action.timeScale = -speed;
-
-    const displayedSpeed = Math.round((speed / maxSpeed) * 60);
-    kecepatanDiv.textContent = displayedSpeed.toString().padStart(2, "0");
-
-    renderer.render(scene, camera);
+    animate();
 }
-animate();
 
-// ========== MODAL BATTERY DETAIL ==========
-const btn = document.getElementById("battery-detail");
-const modal = document.getElementById("popupModal");
-const iframe = document.getElementById("modal-iframe");
-const closeBtn = document.querySelector(".modal .close");
 
-btn.addEventListener("click", () => {
-    iframe.src = "pages/Battery.html";
-    modal.classList.add("show");
-});
-
-closeBtn.addEventListener("click", () => {
-    modal.classList.remove("show");
-    setTimeout(() => { iframe.src = ""; }, 300);
-});
-
-window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        modal.classList.remove("show");
-        setTimeout(() => { iframe.src = ""; }, 300);
-    }
-});
