@@ -31,9 +31,9 @@
                       </div>
                     </div>
                     <div class="monitor-pin">
-                        <div id="monitorIG" class="pin" data-group="IG" style="top: 80px; left: 10px;">IG</div>
-                        <div id="monitorLIN" class="pin" data-group="LIN" style="top: 80px; left: 10px;">LIN</div>
-                        <div id="monitor-" class="pin" data-group="-" style="top: 200px; left: 10px;">-</div> 
+                        <div id="monitorIG" class="pin" data-group="IG" data-device="monitor" style="top: 80px; left: 10px;">IG</div>
+                        <div id="monitorLIN" class="pin" data-group="LIN" data-device="monitor" style="top: 80px; left: 10px;">LIN</div>
+                        <div id="monitor-" class="pin" data-group="-" data-device="monitor" style="top: 200px; left: 10px;">-</div> 
                     </div>
                 </div>
             </div>
@@ -371,4 +371,11 @@
     <script src="js/index.js" defer></script>
     <script src="js/Style.js" defer></script>
 </body>
+<div id="popupModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <iframe id="modal-iframe" src="" frameborder="0"></iframe>
+    </div>
+</div>
+
 </html>
