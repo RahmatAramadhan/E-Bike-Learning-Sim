@@ -93,6 +93,7 @@ p {
   align-items: center;
   gap: 10px;
   margin-bottom: 5px;
+  justify-content: center;
 }
 
 .battery, .switch-key, .wheel, .dc-converter, .charge, .fuse,

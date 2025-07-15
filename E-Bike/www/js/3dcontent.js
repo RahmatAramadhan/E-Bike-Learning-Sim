@@ -131,13 +131,3 @@ window.addEventListener('resize', () => {
 window.tambahSeri = tambahSeri;
 window.tambahParalel = tambahParalel;
 window.resetRangkaian = resetRangkaian;
-
-let test = false;
-
-if (test) {
-    window.RODA_DIIZINKAN = true;
-    initRodaScene('wheel-cycle', 'pedal-button', 'kecepatan');
-} else {
-    window.RODA_DIIZINKAN = false;
-    console.warn("⛔ initRodaScene tidak diizinkan, tidak dijalankan");
-}

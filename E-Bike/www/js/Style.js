@@ -62,9 +62,7 @@ switchKnob.addEventListener('click', () => {
     console.log("Mode:", labels[current]);
 });
 
-// ========== ANIMASI RODA ==========
-export function initRodaScene(containerId, pedalButtonId, kecepatanId) {
-    
+export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanAnimasi = true) {
     let mixer;
     let action;
     let speed = 0;
@@ -112,12 +110,13 @@ export function initRodaScene(containerId, pedalButtonId, kecepatanId) {
         console.error('GLB Load Error:', error);
     });
 
-    // Tombol pedal
-    pedalBtn.addEventListener("mousedown", () => isPressed = true);
-    pedalBtn.addEventListener("mouseup", () => isPressed = false);
-    pedalBtn.addEventListener("mouseleave", () => isPressed = false);
-    pedalBtn.addEventListener("touchstart", () => isPressed = true);
-    pedalBtn.addEventListener("touchend", () => isPressed = false);
+    if (aktifkanAnimasi) {
+        pedalBtn.addEventListener("mousedown", () => isPressed = true);
+        pedalBtn.addEventListener("mouseup", () => isPressed = false);
+        pedalBtn.addEventListener("mouseleave", () => isPressed = false);
+        pedalBtn.addEventListener("touchstart", () => isPressed = true);
+        pedalBtn.addEventListener("touchend", () => isPressed = false);
+    }
 
     window.addEventListener("resize", () => {
         camera.aspect = container.clientWidth / container.clientHeight;
@@ -131,24 +130,29 @@ export function initRodaScene(containerId, pedalButtonId, kecepatanId) {
         const delta = clock.getDelta();
         if (mixer) mixer.update(delta);
 
-        if (isPressed) {
-            if (speed < maxSpeed) speed += acceleration;
+        if (aktifkanAnimasi) {
+            if (isPressed) {
+                if (speed < maxSpeed) speed += acceleration;
+            } else {
+                if (speed > 0) speed -= deceleration;
+                if (speed < 0) speed = 0;
+            }
+
+            if (action) action.timeScale = -speed;
+
+            const displayedSpeed = Math.round((speed / maxSpeed) * 60);
+            kecepatanDiv.textContent = displayedSpeed > 0
+                ? displayedSpeed.toString().padStart(2, "0")
+                : "00"; 
         } else {
-            if (speed > 0) speed -= deceleration;
-            if (speed < 0) speed = 0;
+            kecepatanDiv.textContent = "--";
         }
-
-        if (action) action.timeScale = -speed;
-
-        const displayedSpeed = Math.round((speed / maxSpeed) * 60);
-        kecepatanDiv.textContent = displayedSpeed > 0 
-            ? displayedSpeed.toString().padStart(2, "0")
-            : "--"; // kondisi default saat kecepatan nol
 
         renderer.render(scene, camera);
     }
 
     animate();
 }
+
 
 
