@@ -1,4 +1,4 @@
-import {initRodaScene} from './Style.js';
+import {destroyScene, initRodaScene} from './Style.js';
 
 let selectedPin = null;
 
@@ -218,6 +218,8 @@ document.querySelectorAll('.pin').forEach(pin => {
     });
 });
 
+let roda = false;
+
 function checkAllConnection() {
     let overallConnections = true; 
 
@@ -227,7 +229,19 @@ function checkAllConnection() {
         if (!allTrue) overallConnections = false;
     });
 
+    const rodaSekarang = allComponents.monitor;
+
     const indicator = document.querySelector('.indicator-status');
+    if (!roda && rodaSekarang) {
+        initRodaScene('wheel-cycle', 'pedal-button', 'kecepatan', true);
+    }
+    
+    if (!rodaSekarang && roda) {
+        destroyScene("wheel-cycle", "kecepatan");
+    }
+
+    roda = rodaSekarang;
+    
     if (overallConnections) {
         indicator.textContent = "All motors connected";
         indicator.style.backgroundColor = "limegreen";
@@ -324,8 +338,3 @@ window.addEventListener("click", (e) => {
     }
 });
 
-let roda = true;
-
-if(roda){
-    initRodaScene('wheel-cycle', 'pedal-button', 'kecepatan', roda)
-}

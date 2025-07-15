@@ -62,7 +62,11 @@ switchKnob.addEventListener('click', () => {
     console.log("Mode:", labels[current]);
 });
 
-export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanAnimasi = true) {
+let currentAnimationFrameId = null;
+let currentRenderer = null;
+let currentContainer = null;
+
+export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanAnimasi) {
     let mixer;
     let action;
     let speed = 0;
@@ -93,22 +97,25 @@ export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanA
 
     const loader = new THREE.GLTFLoader();
     loader.setPath('../../Assets/3d/');
-    loader.load('Roda.glb', (gltf) => {
-        const object = gltf.scene;
-        object.position.set(0, 0, 0);
-        object.rotation.y = -0.8;
-        object.scale.set(1, 1, 1);
-        scene.add(object);
+    console.log(aktifkanAnimasi);
+    if (aktifkanAnimasi) {
+        loader.load('Roda.glb', (gltf) => {
+            const object = gltf.scene;
+            object.position.set(0, 0, 0);
+            object.rotation.y = -0.8;
+            object.scale.set(1, 1, 1);
+            scene.add(object);
 
-        if (gltf.animations.length > 0) {
-            mixer = new THREE.AnimationMixer(object);
-            action = mixer.clipAction(gltf.animations[0]);
-            action.play();
-            action.timeScale = 0;
-        }
-    }, undefined, (error) => {
-        console.error('GLB Load Error:', error);
-    });
+            if (gltf.animations.length > 0) {
+                mixer = new THREE.AnimationMixer(object);
+                action = mixer.clipAction(gltf.animations[0]);
+                action.play();
+                action.timeScale = 0;
+            }
+        }, undefined, (error) => {
+            console.error('GLB Load Error:', error);
+        });
+    }
 
     if (aktifkanAnimasi) {
         pedalBtn.addEventListener("mousedown", () => isPressed = true);
@@ -126,7 +133,7 @@ export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanA
 
     const clock = new THREE.Clock();
     function animate() {
-        requestAnimationFrame(animate);
+        currentAnimationFrameId = requestAnimationFrame(animate);
         const delta = clock.getDelta();
         if (mixer) mixer.update(delta);
 
@@ -152,6 +159,29 @@ export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanA
     }
 
     animate();
+
+    currentRenderer = renderer;
+    currentContainer = container;
+}
+
+export function destroyScene(containerId, kecepatanId){
+    const container = document.getElementById(containerId);
+    const kecepatanDiv = document.getElementById(kecepatanId);
+
+    if(currentAnimationFrameId){
+        cancelAnimationFrame(currentAnimationFrameId);
+        currentAnimationFrameId = null;
+    }
+
+    if(currentRenderer && currentContainer){
+        currentRenderer.dispose?.();
+        currentContainer.innerHTML = '';
+    }
+
+    if (kecepatanDiv) kecepatanDiv.textContent = "--";
+
+    currentRenderer = null;
+    currentContainer = null;
 }
 
 
