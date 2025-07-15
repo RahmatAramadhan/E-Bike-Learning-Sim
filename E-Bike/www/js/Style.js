@@ -1,24 +1,8 @@
 // ========== SWITCH (ON/OFF) ==========
-const sw = document.getElementById('switch');
-const status = document.getElementById('status');
-let isOn = true;
 
-sw.addEventListener('click', () => {
-    isOn = !isOn;
-    sw.classList.toggle('off', !isOn);
-    status.textContent = isOn ? 'ON' : 'OFF';
-});
 
 // ========== KEY LOCK TOGGLE ==========
-const keyRotator = document.getElementById('key-rotator');
-const keyStatusText = document.getElementById('key-status-text');
-let locked = true;
 
-keyRotator.addEventListener('click', () => {
-    locked = !locked;
-    keyRotator.classList.toggle('unlocked', !locked);
-    keyStatusText.textContent = locked ? 'LOCKED' : 'UNLOCKED';
-});
 
 // ========== GEAR SELECTOR (KNOB) ==========
 const knob = document.getElementById('knob');
@@ -166,7 +150,6 @@ export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanA
 
 export function destroyScene(containerId, kecepatanId){
     const container = document.getElementById(containerId);
-    const kecepatanDiv = document.getElementById(kecepatanId);
 
     if(currentAnimationFrameId){
         cancelAnimationFrame(currentAnimationFrameId);
@@ -177,8 +160,6 @@ export function destroyScene(containerId, kecepatanId){
         currentRenderer.dispose?.();
         currentContainer.innerHTML = '';
     }
-
-    if (kecepatanDiv) kecepatanDiv.textContent = "--";
 
     currentRenderer = null;
     currentContainer = null;

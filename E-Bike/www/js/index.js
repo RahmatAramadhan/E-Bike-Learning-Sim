@@ -98,8 +98,35 @@ const connections = {
 
 const allComponents = {
     monitor : null, motor : null, transmisi : null, pedal : null,
-    converter : null, battery : null, kontak : null
+    battery : null, kontak : null, kontakOn : null,
+    kontaktor : null
 };
+
+const keyRotator = document.getElementById('key-rotator');
+const keyStatusText = document.getElementById('key-status-text');
+let locked = true;
+allComponents.kontakOn = false;
+
+keyRotator.addEventListener('click', () => {
+    locked = !locked;
+    keyRotator.classList.toggle('unlocked', !locked);
+    keyStatusText.textContent = locked ? 'LOCKED' : 'UNLOCKED';
+    allComponents.kontakOn = !allComponents.kontakOn;
+    checkAllConnection();
+});
+
+const sw = document.getElementById('switch');
+const status = document.getElementById('status');
+let isOn = true;
+allComponents.kontaktor = true;
+
+sw.addEventListener('click', () => {
+    isOn = !isOn;
+    sw.classList.toggle('off', !isOn);
+    status.textContent = isOn ? 'ON' : 'OFF';
+    allComponents.kontaktor = !allComponents.kontaktor;
+    checkAllConnection();
+});
 
 document.querySelectorAll('.pin').forEach(pin => {
     pin.addEventListener('click', function(){
@@ -221,120 +248,31 @@ document.querySelectorAll('.pin').forEach(pin => {
 let roda = false;
 
 function checkAllConnection() {
-    let overallConnections = true; 
 
     Object.keys(connections).forEach(component => {
         const allTrue = Object.values(connections[component]).every(value => {return value && value.status === 'connected' && value.connectedTo !== null;});
         allComponents[component] = allTrue;
-        if (!allTrue) overallConnections = false;
+        
     });
 
+    const overallConnections = Object.values(allComponents).every(val => val === true);
+
     const rodaSekarang = allComponents.monitor;
-
+    const kecepatanDiv = document.getElementById('kecepatan');
     const indicator = document.querySelector('.indicator-status');
-    if (!roda && rodaSekarang) {
-        initRodaScene('wheel-cycle', 'pedal-button', 'kecepatan', true);
-    }
-    
-    if (!rodaSekarang && roda) {
-        destroyScene("wheel-cycle", "kecepatan");
-    }
 
-    roda = rodaSekarang;
-    
-    if (overallConnections) {
-        indicator.textContent = "All motors connected";
-        indicator.style.backgroundColor = "limegreen";
+    if (allComponents.battery && allComponents.kontaktor && allComponents.kontak && allComponents.kontakOn && allComponents.monitor) {
+        kecepatanDiv.textContent = "00";
+        if (allComponents.battery && allComponents.kontaktor && allComponents.kontak && allComponents.kontakOn && allComponents.monitor && allComponents.motor && allComponents.transmisi && allComponents.pedal) {
+            console.log("sudah masuk sini");
+            initRodaScene('wheel-cycle', 'pedal-button', 'kecepatan', true);
+        }else{
+            console.log("malah masuk sini");
+            destroyScene("wheel-cycle", "kecepatan");
+        }
     }else{
-        indicator.textContent = "motor : " + allComponents.motor + " transmisi : " + allComponents.transmisi + " pedal : " +  allComponents.pedal + " battery : " + allComponents.battery + " kontak : " + allComponents.kontak + " monitor : " + allComponents.monitor ;
-        indicator.style.backgroundColor = "red";
+        kecepatanDiv.textContent = "--";
     }
+    roda = rodaSekarang;
 }
-
-// ========== SWITCH (ON/OFF) ==========
-const sw = document.getElementById('switch');
-const status = document.getElementById('status');
-let isOn = true;
-
-sw.addEventListener('click', () => {
-    isOn = !isOn;
-    sw.classList.toggle('off', !isOn);
-    status.textContent = isOn ? 'ON' : 'OFF';
-});
-
-// ========== KEY LOCK TOGGLE ==========
-const keyRotator = document.getElementById('key-rotator');
-const keyStatusText = document.getElementById('key-status-text');
-let locked = true;
-
-keyRotator.addEventListener('click', () => {
-    locked = !locked;
-    keyRotator.classList.toggle('unlocked', !locked);
-    keyStatusText.textContent = locked ? 'LOCKED' : 'UNLOCKED';
-});
-
-// ========== GEAR SELECTOR (KNOB) ==========
-const knob = document.getElementById('knob');
-const positions = ['P', 'R', 'D'];
-let currentIndex = 0;
-
-const angleMap = {
-    0: -40,
-    1: 0,
-    2: 40
-};
-
-function updateKnob() {
-    knob.style.transform = `rotate(${angleMap[currentIndex]}deg)`;
-}
-
-document.getElementById('leftBtn').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + positions.length) % positions.length;
-    updateKnob();
-});
-
-document.getElementById('rightBtn').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % positions.length;
-    updateKnob();
-});
-
-updateKnob();
-
-// ========== SWITCH MODE (I / O / II) ==========
-const switchKnob = document.getElementById('switchKnob');
-const label = document.getElementById('knobLabel');
-
-const positionsLabel = [2, 31, 60];
-const labels = ['I', 'O', 'II'];
-let current = 0;
-
-switchKnob.addEventListener('click', () => {
-    current = (current + 1) % positionsLabel.length;
-    switchKnob.style.left = `${positionsLabel[current]}px`;
-    label.textContent = labels[current];
-    console.log("Mode:", labels[current]);
-});
-
-// ========== MODAL BATTERY DETAIL ==========
-const btn = document.getElementById("battery-detail");
-const modal = document.getElementById("popupModal");
-const iframe = document.getElementById("modal-iframe");
-const closeBtn = document.querySelector(".modal .close");
-
-btn.addEventListener("click", () => {
-    iframe.src = "pages/Battery.html";
-    modal.classList.add("show");
-});
-
-closeBtn.addEventListener("click", () => {
-    modal.classList.remove("show");
-    setTimeout(() => { iframe.src = ""; }, 300);
-});
-
-window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        modal.classList.remove("show");
-        setTimeout(() => { iframe.src = ""; }, 300);
-    }
-});
 
