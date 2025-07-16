@@ -1,10 +1,4 @@
-// ========== SWITCH (ON/OFF) ==========
 
-
-// ========== KEY LOCK TOGGLE ==========
-
-
-// ========== GEAR SELECTOR (KNOB) ==========
 const knob = document.getElementById('knob');
 const positions = ['P', 'R', 'D'];
 let currentIndex = 0;
