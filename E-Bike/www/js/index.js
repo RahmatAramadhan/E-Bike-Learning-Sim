@@ -4,94 +4,91 @@ let selectedPin = null;
 
 const connections = {
     monitor: {
-        IG:   { status: null, connectedTo: null },
-        LIN:  { status: null, connectedTo: null },
-        '-':  { status: null, connectedTo: null }
+        IG:   { status: 'connected', connectedTo: 'controllerIG' },
+        LIN:  { status: 'connected', connectedTo: 'controllerLIN' },
+        '-':  { status: 'connected', connectedTo: 'controllerMinKanan' }
     },
     motor: {
-        '+':  { status: null, connectedTo: null },
-        '-':  { status: null, connectedTo: null },
-        A:    { status: null, connectedTo: null },
-        B:    { status: null, connectedTo: null },
-        C:    { status: null, connectedTo: null },
-        U:    { status: null, connectedTo: null },
-        V:    { status: null, connectedTo: null },
-        W:    { status: null, connectedTo: null }
+        '+':  { status: 'connected', connectedTo: 'controller+' },
+        '-':  { status: 'connected', connectedTo: 'controllerMinKiri' },
+        A:    { status: 'connected', connectedTo: 'controllerA' },
+        B:    { status: 'connected', connectedTo: 'controllerB' },
+        C:    { status: 'connected', connectedTo: 'controllerC' },
+        U:    { status: 'connected', connectedTo: 'controllerU' },
+        V:    { status: 'connected', connectedTo: 'controllerV' },
+        W:    { status: 'connected', connectedTo: 'controllerW' }
     },
     transmisi: {
-        P:     { status: null, connectedTo: null },
-        R:     { status: null, connectedTo: null },
-        '1':   { status: null, connectedTo: null },
-        '3':   { status: null, connectedTo: null },
-        GND:   { status: null, connectedTo: null },
-        SPORT: { status: null, connectedTo: null }
+        P:     { status: 'connected', connectedTo: 'controllerP' },
+        R:     { status: 'connected', connectedTo: 'controllerR' },
+        '1':   { status: 'connected', connectedTo: 'controller1' },
+        '3':   { status: 'connected', connectedTo: 'controller3' },
+        GND:   { status: 'connected', connectedTo: 'controllerGND' },
+        SPORT: { status: 'connected', connectedTo: 'controllerSPORT' }
     },
     pedal: {
-        '+5V': { status: null, connectedTo: null },
-        App:   { status: null, connectedTo: null },
-        '-':   { status: null, connectedTo: null },
-        REM:   { status: null, connectedTo: null }
+        '+5V': { status: 'connected', connectedTo: 'controller+5v' },
+        App:   { status: 'connected', connectedTo: 'controllerApp' },
+        '-':   { status: 'connected', connectedTo: 'controllerMinKanan' },
+        REM:   { status: 'connected', connectedTo: 'controllerREM' }
     },
     battery: {
-        S0:  { status: null, connectedTo: null },
-        S1:  { status: null, connectedTo: null },
-        S2:  { status: null, connectedTo: null },
-        S3:  { status: null, connectedTo: null },
-        S4:  { status: null, connectedTo: null },
-        S5:  { status: null, connectedTo: null },
-        S6:  { status: null, connectedTo: null },
-        S7:  { status: null, connectedTo: null },
-        S8:  { status: null, connectedTo: null },
-        S9:  { status: null, connectedTo: null },
-        S10: { status: null, connectedTo: null },
-        S11: { status: null, connectedTo: null },
-        S12: { status: null, connectedTo: null },
-        S13: { status: null, connectedTo: null }
+        S0:  { status: 'connected', connectedTo: 'bmsS0' },
+        S1:  { status: 'connected', connectedTo: 'bmsS1' },
+        S2:  { status: 'connected', connectedTo: 'bmsS2' },
+        S3:  { status: 'connected', connectedTo: 'bmsS3' },
+        S4:  { status: 'connected', connectedTo: 'bmsS4' },
+        S5:  { status: 'connected', connectedTo: 'bmsS5' },
+        S6:  { status: 'connected', connectedTo: 'bmsS6' },
+        S7:  { status: 'connected', connectedTo: 'bmsS7' },
+        S8:  { status: 'connected', connectedTo: 'bmsS8' },
+        S9:  { status: 'connected', connectedTo: 'bmsS9' },
+        S10: { status: 'connected', connectedTo: 'bmsS10' },
+        S11: { status: 'connected', connectedTo: 'bmsS11' },
+        S12: { status: 'connected', connectedTo: 'bmsS12' },
+        S13: { status: 'connected', connectedTo: 'bmsS13' }
     },
     bms: {
-        S0:  { status: null, connectedTo: null },
-        S1:  { status: null, connectedTo: null },
-        S2:  { status: null, connectedTo: null },
-        S3:  { status: null, connectedTo: null },
-        S4:  { status: null, connectedTo: null },
-        S5:  { status: null, connectedTo: null },
-        S6:  { status: null, connectedTo: null },
-        S7:  { status: null, connectedTo: null },
-        S8:  { status: null, connectedTo: null },
-        S9:  { status: null, connectedTo: null },
-        S10: { status: null, connectedTo: null },
-        S11: { status: null, connectedTo: null },
-        S12: { status: null, connectedTo: null },
-        S13: { status: null, connectedTo: null }
+        S0:  { status: 'connected', connectedTo: 'batteryS0' },
+        S1:  { status: 'connected', connectedTo: 'batteryS1' },
+        S2:  { status: 'connected', connectedTo: 'batteryS2' },
+        S3:  { status: 'connected', connectedTo: 'batteryS3' },
+        S4:  { status: 'connected', connectedTo: 'batteryS4' },
+        S5:  { status: 'connected', connectedTo: 'batteryS5' },
+        S6:  { status: 'connected', connectedTo: 'batteryS6' },
+        S7:  { status: 'connected', connectedTo: 'batteryS7' },
+        S8:  { status: 'connected', connectedTo: 'batteryS8' },
+        S9:  { status: 'connected', connectedTo: 'batteryS9' },
+        S10: { status: 'connected', connectedTo: 'batteryS10' },
+        S11: { status: 'connected', connectedTo: 'batteryS11' },
+        S12: { status: 'connected', connectedTo: 'batteryS12' },
+        S13: { status: 'connected', connectedTo: 'batteryS13' }
     },
     kontak: {
-        IG: { status: null, connectedTo: null }
+        IG: { status: 'connected', connectedTo: 'controllerIG' }
     },
     controller : {
-    '+': { status: null, connectedTo: null },
-    'A': { status: null, connectedTo: null },
-    'B': { status: null, connectedTo: null },
-    'C': { status: null, connectedTo: null },
-    '-': { status: null, connectedTo: null }, 
+    '+': { status: 'connected', connectedTo: 'motor+' },
+    'A': { status: 'connected', connectedTo: 'motorA' },
+    'B': { status: 'connected', connectedTo: 'motorB' },
+    'C': { status: 'connected', connectedTo: 'motorC' },
+    '-': { status: 'connected', connectedTo: 'motor-' }, 
 
-    'U': { status: null, connectedTo: null },
-    'V': { status: null, connectedTo: null },
-    'W': { status: null, connectedTo: null },
+    'U': { status: 'connected', connectedTo: 'motorU' },
+    'V': { status: 'connected', connectedTo: 'motorV' },
+    'W': { status: 'connected', connectedTo: 'motorW' },
 
-    'LIN': { status: null, connectedTo: null },
-    'P': { status: null, connectedTo: null },
-    'R': { status: null, connectedTo: null },
-    '1': { status: null, connectedTo: null },
-    '3': { status: null, connectedTo: null },
-    'SPORT': { status: null, connectedTo: null },
-    '+5V': { status: null, connectedTo: null },
-    'App': { status: null, connectedTo: null },
-    'REM': { status: null, connectedTo: null },
-    'IG': { status: null, connectedTo: null },
-    'GND': { status: null, connectedTo: null },
-
-    '+48V': { status: null, connectedTo: null },
-    '-48V': { status: null, connectedTo: null }
+    'LIN': { status: 'connected', connectedTo: 'monitorLIN' },
+    'P': { status: 'connected', connectedTo: 'transmisiP' },
+    'R': { status: 'connected', connectedTo: 'transmisiR' },
+    '1': { status: 'connected', connectedTo: 'transmisi1' },
+    '3': { status: 'connected', connectedTo: 'transmisi3' },
+    'SPORT': { status: 'connected', connectedTo: 'transmisiSPORT' },
+    '+5V': { status: 'connected', connectedTo: 'pedal+5V' },
+    'App': { status: 'connected', connectedTo: 'pedalApp' },
+    'REM': { status: 'connected', connectedTo: 'pedalMin' },
+    'IG': { status: 'connected', connectedTo: 'kontakIG' },
+    'GND': { status: 'connected', connectedTo: 'transmisiGND' }
     }
 };
 
@@ -101,6 +98,8 @@ const allComponents = {
     battery : null, kontak : null, kontakOn : null,
     kontaktor : null
 };
+
+checkPinConnection();
 
 const keyRotator = document.getElementById('key-rotator');
 const keyStatusText = document.getElementById('key-status-text');
@@ -245,7 +244,23 @@ document.querySelectorAll('.pin').forEach(pin => {
     });
 });
 
-let roda = false;
+function checkPinConnection(){
+    for (const device in connections) {
+        for (const group in connections[device]) {
+            const pinData = connections[device][group];
+            document.getElementById(connections[device][group].connectedTo).classList.add('connected');
+
+            const el = document.querySelector(`.pin[data-device="${device}"][data-group="${group}"]`);
+
+            if (!el) continue;
+
+            if (pinData.status === 'connected') {
+                el.classList.add('connected');
+            }
+        }
+        
+    }
+}
 
 function checkAllConnection() {
 
@@ -271,8 +286,8 @@ function checkAllConnection() {
             destroyScene("wheel-cycle", "kecepatan");
         }
     }else{
+        destroyScene("wheel-cycle", "kecepatan");
         kecepatanDiv.textContent = "--";
     }
-    roda = rodaSekarang;
 }
 
