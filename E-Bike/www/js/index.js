@@ -99,6 +99,28 @@ const allComponents = {
     kontaktor : null
 };
 
+const brakeButton = document.getElementById('red-button-brake');
+const brakeLight = document.getElementById('brake-light');
+
+brakeButton.addEventListener('mousedown', () => {
+    brakeLight.className = 'led on red';
+});
+
+brakeButton.addEventListener('mouseup', () => {
+    brakeLight.className = 'led off';
+})
+
+brakeButton.addEventListener('mouseleave', () => {
+    brakeLight.className = 'led off';
+});
+
+brakeButton.addEventListener('touchstart', () => {
+    brakeLight.className = 'led on red';
+});
+
+brakeButton.addEventListener('touchend', () => {
+    brakeLight.className = 'led off';
+});
 
 const knob = document.getElementById('knob');
 const positions = ['P', 'R', 'D'];
