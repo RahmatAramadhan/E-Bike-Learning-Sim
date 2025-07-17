@@ -33,7 +33,7 @@ export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanA
 
     const loader = new THREE.GLTFLoader();
     if (aktifkanAnimasi) {
-        loader.load('../assets/models/Roda.glb', function(gltf) {
+        loader.load('assets/models/Roda.glb', function(gltf) {
             const object = gltf.scene;
             object.position.set(0, 0, 0);
             object.rotation.y = -0.8;

@@ -6,6 +6,7 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
+    <preference name="Orientation" value="landscape" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
 </widget>
