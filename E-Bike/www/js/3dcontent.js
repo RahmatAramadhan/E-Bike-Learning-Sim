@@ -21,9 +21,22 @@ scene.add(light);
 const ambient = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambient);
 
+
+let mixer;
+let action;
+let clock = new THREE.Clock();
 const loader = new THREE.GLTFLoader();
 loader.load('../../../Assets/3d/Battery_Fix.glb', function(gltf) {
+    const model = gltf.scene;
     scene.add(gltf.scene);
+
+    mixer = new THREE.AnimationMixer(model);
+
+    const animations = gltf.animations;
+    if (animations && animations.length) {
+        
+    }
+
 }, undefined, function(error) {
     console.error('An error occurred while loading the GLTF model:', error);
 })
