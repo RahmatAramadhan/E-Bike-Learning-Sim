@@ -159,5 +159,29 @@ export function destroyScene(containerId, kecepatanId){
     currentContainer = null;
 }
 
+document.getElementById('battery-detail').addEventListener('click', function () {
+    const modal = document.getElementById('popupModal');
+    const iframe = document.getElementById('modal-iframe');
+    
+    iframe.src = 'pages/Battery.html'; 
+    modal.classList.add('show'); 
+});
 
+document.querySelector('.modal .close').addEventListener('click', function () {
+    const modal = document.getElementById('popupModal');
+    const iframe = document.getElementById('modal-iframe');
+    
+    modal.classList.remove('show'); 
+    iframe.src = ''; 
+});
+
+window.addEventListener('click', function (event) {
+    const modal = document.getElementById('popupModal');
+    const iframe = document.getElementById('modal-iframe');
+    
+    if (event.target === modal) {
+        modal.classList.remove('show');
+        iframe.src = '';
+    }
+});
 
