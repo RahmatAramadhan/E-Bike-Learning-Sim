@@ -31,7 +31,7 @@ function initBattery3D() {
     const clock = new THREE.Clock();
 
     const loader = new THREE.GLTFLoader();
-    loader.load('../../../Assets/3d/Battery_Fix.glb', function(gltf) {
+    loader.load('../assets/models/Battery_Fix.glb', function(gltf) {
         const model = gltf.scene;
         model.rotation.y = THREE.MathUtils.degToRad(-60);
         scene.add(model);
@@ -128,7 +128,7 @@ function initBatteryStringing() {
     const yOffset = -row * spacingY;
     const zOffset = 0; 
 
-    loader.load('../../../Assets/3d/Batteryglb.gltf', (gltf) => {
+    loader.load('../assets/models/Batteryglb.gltf', (gltf) => {
         const battery = gltf.scene.clone();
         battery.scale.set(0.5, 0.5, 0.5);
         battery.position.set(xOffset, yOffset, zOffset);
@@ -158,7 +158,7 @@ function initBatteryStringing() {
         const xOffset = col * spacingX;
         const yOffset = -row * spacingY;
 
-        loader.load('../../../Assets/3d/Batteryglb.gltf', (gltf) => {
+        loader.load('../assets/models/Batteryglb.gltf', (gltf) => {
         const battery = gltf.scene.clone();
         battery.scale.set(0.5, 0.5, 0.5);
         battery.position.set(xOffset, yOffset, zOffset);
