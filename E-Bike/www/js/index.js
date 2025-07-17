@@ -99,6 +99,52 @@ const allComponents = {
     kontaktor : null
 };
 
+
+const knob = document.getElementById('knob');
+const positions = ['P', 'R', 'D'];
+let currentIndex = 0;
+let maksimal = 20;
+
+const angleMap = {
+    0: -40,
+    1: 0,
+    2: 40
+};
+
+function updateKnob() {
+    knob.style.transform = `rotate(${angleMap[currentIndex]}deg)`;
+}
+
+document.getElementById('leftBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + positions.length) % positions.length;
+    checkAllConnection(currentIndex, maksimal);
+    updateKnob();
+});
+
+document.getElementById('rightBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % positions.length;
+    checkAllConnection(currentIndex, maksimal);
+    updateKnob();
+});
+
+updateKnob();
+
+const switchKnob = document.getElementById('switchKnob');
+const label = document.getElementById('knobLabel');
+
+const positionsLabel = [2, 31, 60];
+const labels = ['I', 'O', 'II'];
+let current = 0;
+
+switchKnob.addEventListener('click', () => {
+    current = (current + 1) % positionsLabel.length;
+    switchKnob.style.left = `${positionsLabel[current]}px`;
+    label.textContent = labels[current];
+    if (current === 1)maksimal = 40;
+    if (current === 2)maksimal = 60;
+    checkAllConnection(currentIndex, maksimal);
+});
+
 checkPinConnection();
 
 const keyRotator = document.getElementById('key-rotator');
@@ -111,7 +157,7 @@ keyRotator.addEventListener('click', () => {
     keyRotator.classList.toggle('unlocked', !locked);
     keyStatusText.textContent = locked ? 'LOCKED' : 'UNLOCKED';
     allComponents.kontakOn = !allComponents.kontakOn;
-    checkAllConnection();
+    checkAllConnection(currentIndex, maksimal);
 });
 
 const sw = document.getElementById('switch');
@@ -124,7 +170,7 @@ sw.addEventListener('click', () => {
     sw.classList.toggle('off', !isOn);
     status.textContent = isOn ? 'ON' : 'OFF';
     allComponents.kontaktor = !allComponents.kontaktor;
-    checkAllConnection();
+    checkAllConnection(currentIndex, maksimal);
 });
 
 document.querySelectorAll('.pin').forEach(pin => {
@@ -197,7 +243,7 @@ document.querySelectorAll('.pin').forEach(pin => {
 
             pin1.classList.remove('selected');
             selectedPin = null;
-            checkAllConnection();
+            checkAllConnection(currentIndex, maksimal);
             return;
         }
 
@@ -240,7 +286,7 @@ document.querySelectorAll('.pin').forEach(pin => {
 
         pin1.classList.remove('selected');
         selectedPin = null;
-        checkAllConnection();
+        checkAllConnection(currentIndex, maksimal);
     });
 });
 
@@ -262,15 +308,13 @@ function checkPinConnection(){
     }
 }
 
-function checkAllConnection() {
+function checkAllConnection(knop, maksimal) {
 
     Object.keys(connections).forEach(component => {
         const allTrue = Object.values(connections[component]).every(value => {return value && value.status === 'connected' && value.connectedTo !== null;});
         allComponents[component] = allTrue;
         
     });
-
-    const overallConnections = Object.values(allComponents).every(val => val === true);
 
     const rodaSekarang = allComponents.monitor;
     const kecepatanDiv = document.getElementById('kecepatan');
@@ -279,10 +323,9 @@ function checkAllConnection() {
     if (allComponents.battery && allComponents.kontaktor && allComponents.kontak && allComponents.kontakOn && allComponents.monitor) {
         kecepatanDiv.textContent = "00";
         if (allComponents.battery && allComponents.kontaktor && allComponents.kontak && allComponents.kontakOn && allComponents.monitor && allComponents.motor && allComponents.transmisi && allComponents.pedal) {
-            console.log("sudah masuk sini");
-            initRodaScene('wheel-cycle', 'pedal-button', 'kecepatan', true);
+            destroyScene("wheel-cycle", "kecepatan");
+            initRodaScene('wheel-cycle', 'pedal-button', 'kecepatan', true, knop, maksimal);
         }else{
-            console.log("malah masuk sini");
             destroyScene("wheel-cycle", "kecepatan");
         }
     }else{

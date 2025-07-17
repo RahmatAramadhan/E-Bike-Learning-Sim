@@ -1,50 +1,8 @@
-
-const knob = document.getElementById('knob');
-const positions = ['P', 'R', 'D'];
-let currentIndex = 0;
-
-const angleMap = {
-    0: -40,
-    1: 0,
-    2: 40
-};
-
-function updateKnob() {
-    knob.style.transform = `rotate(${angleMap[currentIndex]}deg)`;
-}
-
-document.getElementById('leftBtn').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + positions.length) % positions.length;
-    updateKnob();
-});
-
-document.getElementById('rightBtn').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % positions.length;
-    updateKnob();
-});
-
-updateKnob();
-
-// ========== SWITCH MODE (I / O / II) ==========
-const switchKnob = document.getElementById('switchKnob');
-const label = document.getElementById('knobLabel');
-
-const positionsLabel = [2, 31, 60];
-const labels = ['I', 'O', 'II'];
-let current = 0;
-
-switchKnob.addEventListener('click', () => {
-    current = (current + 1) % positionsLabel.length;
-    switchKnob.style.left = `${positionsLabel[current]}px`;
-    label.textContent = labels[current];
-    console.log("Mode:", labels[current]);
-});
-
 let currentAnimationFrameId = null;
 let currentRenderer = null;
 let currentContainer = null;
 
-export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanAnimasi) {
+export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanAnimasi, speeds, maksimal) {
     let mixer;
     let action;
     let speed = 0;
@@ -75,7 +33,6 @@ export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanA
 
     const loader = new THREE.GLTFLoader();
     loader.setPath('../../Assets/3d/');
-    console.log(aktifkanAnimasi);
     if (aktifkanAnimasi) {
         loader.load('Roda.glb', (gltf) => {
             const object = gltf.scene;
@@ -115,22 +72,29 @@ export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanA
         const delta = clock.getDelta();
         if (mixer) mixer.update(delta);
 
-        if (aktifkanAnimasi) {
-            if (isPressed) {
-                if (speed < maxSpeed) speed += acceleration;
+        if (speeds !== 0) {
+            if (aktifkanAnimasi) {
+                if (isPressed) {
+                    if (speed < maxSpeed) speed += acceleration;
+                } else {
+                    if (speed > 0) speed -= deceleration;
+                    if (speed < 0) speed = 0;
+                }
+
+                if (speeds === 1) {
+                    if (action) action.timeScale = speed;
+                }else if(speeds === 2){
+                    if (action) action.timeScale = -speed;
+
+                }
+
+                const displayedSpeed = Math.round((speed / maxSpeed) * maksimal);
+                kecepatanDiv.textContent = displayedSpeed > 0
+                    ? displayedSpeed.toString().padStart(2, "0")
+                    : "00"; 
             } else {
-                if (speed > 0) speed -= deceleration;
-                if (speed < 0) speed = 0;
+                kecepatanDiv.textContent = "--";
             }
-
-            if (action) action.timeScale = -speed;
-
-            const displayedSpeed = Math.round((speed / maxSpeed) * 60);
-            kecepatanDiv.textContent = displayedSpeed > 0
-                ? displayedSpeed.toString().padStart(2, "0")
-                : "00"; 
-        } else {
-            kecepatanDiv.textContent = "--";
         }
 
         renderer.render(scene, camera);
