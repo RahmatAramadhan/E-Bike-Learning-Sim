@@ -9,6 +9,8 @@ body {
 .connected-pin.blue { background-color: blue; }
 .connected-pin.black { background-color: black; color: white; }
 
+.button.blue { background-color: #007bff;}
+.button.red { background-color: #dc3545;}
 
 .container {
   font-family: 'Orbitron', sans-serif;
@@ -57,8 +59,6 @@ p {
 
 .detail:hover,
 .button:hover {
-  background-color: #00e600;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
   transform: translateY(-2px);
 }
 

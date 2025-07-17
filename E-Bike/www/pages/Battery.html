@@ -10,21 +10,44 @@
     <div class="page" id="Battery">
         <div class="page-header">
             <h1>Battery</h1>
+
             <div class="battery-detail-contractor">
+                
+                <!-- Teori Baterai -->
                 <div class="battery-teory">
                     <h2>Battery</h2>
-                    <p>The battery is a crucial component of an e-bike, providing the necessary power to the motor. It is typically rechargeable and can vary in capacity, affecting the range and performance of the e-bike.</p>
+                    <p class="battery-info">
+                        The battery is a crucial component of an e-bike, providing the necessary power to the motor. 
+                        It is typically rechargeable and can vary in capacity, affecting the range and performance of the e-bike.
+                    </p>
+
                     <div class="batery-3d-teory">
                         <div class="battery-3d-container" id="battery-3d-container"></div>
-                        <button class="button">Rincian</button>
+                        <button class="button" id="pecah-baterai">Rincian</button>
                     </div>
                 </div>
+
+                <!-- Rangkaian -->
                 <div class="battery-stringing">
-                    <h2>Mencoba Merangkai Baterai</h2>
-                    <p>Battery stringing refers to the configuration of multiple battery cells connected in series or parallel to achieve the desired voltage and capacity. Proper stringing is essential for optimal performance and longevity of the battery system.</p>
+                    <h3>Rangkai</h3>
+                    <p class="battery-info">Simulasi Merangkai Baterai</p>
+
+                    <div class="battery-controls">
+                        <button class="button blue" id="btn-seri">Tambah Seri</button>
+                        <button class="button" id="btn-paralel">Tambah Paralel</button>
+                        <button class="button red" id="btn-reset">Reset</button>
+                    </div>
+
+                    <div class="battery-3d-stringing">
+                        <div id="battery-stringing-canvas" class="battery-3d-stringing"></div>
+                    </div>
+
+                    <div class="battery-summary">
+                        <p>🔋 Total Volt: <span id="totalVolt">0</span> V</p>
+                        <p>⚡ Total Kapasitas: <span id="totalAh">0</span> Ah</p>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -32,6 +55,5 @@
     <script src="../js/GLTFLoader.js" defer></script>
     <script src="../js/OrbitControls.js" defer></script>
     <script src="../js/3dcontent.js" defer></script>
-
 </body>
 </html>
