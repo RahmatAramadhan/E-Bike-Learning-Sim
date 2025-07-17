@@ -411,9 +411,10 @@ p {
 
 .pedal-canvas {
   width: 200px;
-  height: 150px;
+  height: auto;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -430,6 +431,7 @@ p {
   font-family: sans-serif;
   cursor: pointer;
   transition: transform 0.1s ease;
+  margin-bottom: 10px;
 }
 
 .pedal-button:active {
