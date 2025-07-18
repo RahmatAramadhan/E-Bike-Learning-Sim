@@ -1,0 +1,134 @@
+.connected-pin.red { background-color: red; }
+.connected-pin.blue { background-color: blue; }
+.connected-pin.black { background-color: black; color: white; }
+
+.button.blue { background-color: #007bff;}
+.button.red { background-color: #dc3545;}
+
+.led.on.green { background-color: limegreen; }
+.led.on.red { background-color: red; }
+.led.on.yellow { background-color: gold; }
+.led.off { background-color: #aaa; }
+
+.pin, .connected-pin {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 2px solid #555;
+  color: #222;
+  font-weight: bold;
+  border-radius: 50%;
+  line-height: 40px;
+  font-size: 13px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s, transform 0.2s;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+#controllerSPORT,
+#transmisiSPORT,
+#controllerPlus48V,
+#controllerMin48V,
+#converterPlus12V,
+#converterPlus48V,
+#kontakPlus48V {
+  font-size: 8px;
+}
+
+.pin:hover {
+  background-color: #dfefff;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.pin.selected {
+  background-color: yellow;
+}
+
+.pin.connected {
+  background-color: green;
+}
+
+.detail, .button {
+  padding: 10px 20px;
+  background-color: #1aff00;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.detail:hover,
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+    transform: none !important;
+  
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.show .modal-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.modal-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.page{
+  padding: 50px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
