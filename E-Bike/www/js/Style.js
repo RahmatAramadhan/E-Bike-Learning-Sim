@@ -130,6 +130,22 @@ document.getElementById('battery-detail').addEventListener('click', function () 
     modal.classList.add('show'); 
 });
 
+document.getElementById('controller-detail').addEventListener('click', function () {
+    const modal = document.getElementById('popupModal');
+    const iframe = document.getElementById('modal-iframe'); 
+
+    iframe.src = 'pages/Controller.html';
+    modal.classList.add('show');    
+});
+
+document.getElementById('dc-controller-detail').addEventListener('click', function () {
+    const modal = document.getElementById('popupModal');
+    const iframe = document.getElementById('modal-iframe');
+
+    iframe.src = 'pages/DC-Converter.html';
+    modal.classList.add('show');
+});
+
 document.querySelector('.modal .close').addEventListener('click', function () {
     const modal = document.getElementById('popupModal');
     const iframe = document.getElementById('modal-iframe');
