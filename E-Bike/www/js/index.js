@@ -99,6 +99,7 @@ const allComponents = {
     kontaktor : null
 };
 
+
 const brakeButton = document.getElementById('red-button-brake');
 const brakeLight = document.getElementById('brake-light');
 
@@ -126,6 +127,8 @@ const knob = document.getElementById('knob');
 const positions = ['P', 'R', 'D'];
 let currentIndex = 0;
 let maksimal = 20;
+
+checkAllConnection(currentIndex, maksimal);
 
 const angleMap = {
     0: -40,
@@ -349,9 +352,13 @@ function checkAllConnection(knop, maksimal) {
             initRodaScene('wheel-cycle', 'pedal-button', 'kecepatan', true, knop, maksimal);
         }else{
             destroyScene("wheel-cycle", "kecepatan");
+            maksimal = 0;
+            initRodaScene('wheel-cycle', 'pedal-button', 'kecepatan', true, knop, maksimal);
         }
     }else{
         destroyScene("wheel-cycle", "kecepatan");
+        maksimal = 0;
+        initRodaScene('wheel-cycle', 'pedal-button', 'kecepatan', true, knop, maksimal);
         kecepatanDiv.textContent = "--";
     }
 }

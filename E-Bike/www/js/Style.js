@@ -71,7 +71,7 @@ export function initRodaScene(containerId, pedalButtonId, kecepatanId, aktifkanA
         const delta = clock.getDelta();
         if (mixer) mixer.update(delta);
 
-        if (speeds !== 0) {
+        if (speeds !== 0 && maksimal !== 0) {
             if (aktifkanAnimasi) {
                 if (isPressed) {
                     if (speed < maxSpeed) speed += acceleration;
