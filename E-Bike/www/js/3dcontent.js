@@ -10,7 +10,7 @@ function initBattery3D() {
         0.1,
         1000
     );
-    camera.position.set(4, 1, 15);
+    camera.position.set(4, 12, 5);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(detailContainer.clientWidth, detailContainer.clientHeight);
@@ -79,7 +79,7 @@ function initBatteryStringing() {
         1000
     );
 
-    camera.position.set(4, 1, 0);
+    camera.position.set(1, 1, 0);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(stringingContainer.clientWidth, stringingContainer.clientHeight);
