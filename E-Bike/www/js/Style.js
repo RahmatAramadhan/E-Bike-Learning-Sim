@@ -146,6 +146,15 @@ document.getElementById('dc-controller-detail').addEventListener('click', functi
     modal.classList.add('show');
 });
 
+document.getElementById('bms-detail').addEventListener('click', function () {
+    const modal = document.getElementById('popupModal');
+    const iframe = document.getElementById('modal-iframe');
+
+    iframe.src = 'pages/BMS.html';
+    modal.classList.add('show');
+});
+
+
 document.querySelector('.modal .close').addEventListener('click', function () {
     const modal = document.getElementById('popupModal');
     const iframe = document.getElementById('modal-iframe');

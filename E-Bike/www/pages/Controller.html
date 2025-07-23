@@ -10,21 +10,30 @@
 <body>
     <div class="page" id="controller">
         <div class="page-header">
-            <h1>Controller</h1>
+            <h1>Kontroller</h1>
             <div class="controller-detail-contractor">
-                <p class="controller-info">
-                    The controller is the brain of the e-bike, managing the power flow from the battery to the motor. 
-                    It regulates speed and assists in efficient energy use.
-                </p>
+                <div class="controller-info">
+                    <p>
+                        Kontroller pada kendaraan listrik adalah perangkat elektronik yang mengatur aliran daya dari
+                        baterai ke motor listrik. Fungsi utamanya adalah untuk mengontrol kecepatan dan torsi motor
+                        berdasarkan input dari pengemudi. Terdapat 2 jenis controller pada kendaraan, pertama adalah kontroller bawaan kendaraan, sebuah
+                        kontroller yang sudah terprogram dan biasanya tidak dapat dirubah parameternya. Kedua adalah
+                        kontroller custem sebuah kontroller yang bisa di sesuaikan/setting parameter untuk digunakan
+                        sesuai dengan keperluan.
+                    </p>
+                    <h3>Komponen Utama Controller</h3>
+                    <ul>
+                        <li><strong>Modul Kontroller</strong>: Merupakan microcontroller sebagai otak dari controller yang mengatur semua operasi berdasarkan algoritma yang telah diprogram (mengatur kecepatan motor, kontrol arus, kontrol PID, kontrol Fuzzy, dll).</li>
+                        <li><strong>Inverter (driver modul)</strong>: Bahan semikonduktor berupa MOSFET atau IGBT yang mengontrol aliran arus listrik, merubah DC menjadi AC 3 fase untuk mengatur motor listrik.</li>
+                        <li><strong>Current Sensors</strong>: Memantau arus yang mengalir ke motor untuk memastikan operasi yang aman.</li>
+                        <li><strong>Cooling System</strong>: Menjaga suhu komponen elektronik agar tetap dalam batas yang aman.</li>
+                    </ul>
+                </div>
                 <div class="controller-3d">
                     <div class="controller-3d-container" id="controller-3d-container"></div>
                     <button class="button" id="pecah-controller">Rincian</button>
                 </div>
-
-                </div>
             </div>
-
-            
          </div>
     </div>
 

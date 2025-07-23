@@ -6,7 +6,7 @@ body {
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #333;
   margin-bottom: 8px;
   text-transform: uppercase;
@@ -14,9 +14,9 @@ h2 {
   text-align: center;
 }
 
-p {
-  margin: 4px 0;
-  font-size: 14px;
+p, li {
+  font-size: 1.5rem;
+  text-align: justify;
 }
 
 #aset-img {
@@ -530,7 +530,14 @@ main {
 
 .bms-status {
   width: 400px;
-  height: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .battery{

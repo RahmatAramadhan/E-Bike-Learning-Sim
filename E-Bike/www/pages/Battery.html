@@ -3,35 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <title>Battery</title>
-    <link rel="stylesheet" href="../css/Assets.css"
+    <link rel="stylesheet" href="../css/Assets.css">
     <link rel="stylesheet" href="../css/Components.css"> 
     <link rel="stylesheet" href="../css/Styles.css">
 </head>
 <body>
     <div class="page" id="Battery">
         <div class="page-header">
-            <h1>Battery</h1>
+            <h2>Baterai</h2>
 
             <div class="battery-detail-contractor">
-                
                 <!-- Teori Baterai -->
                 <div class="battery-teory">
-                    <h2>Battery</h2>
-                    <p class="battery-info">
-                        The battery is a crucial component of an e-bike, providing the necessary power to the motor. 
-                        It is typically rechargeable and can vary in capacity, affecting the range and performance of the e-bike.
-                    </p>
-
                     <div class="batery-3d-teory">
                         <div class="battery-3d-container" id="battery-3d-container"></div>
                         <button class="button" id="pecah-baterai">Rincian</button>
                     </div>
+                    
+                    <p>
+                        Baterai pada motor listrik berfungsi sebagai penyimpan dan sumber energi utama untuk jalannya
+                        kendaraan, termasuk mensuply kebutuhan tegangan 12 volt untuk sistem kelistrikan body, dan
+                        sistem kelistrikan kendaraan lain yang memerlukan tegangan 12 volt.    
+                    </p>
+                    <p>
+                        Jenis baterai yang digunakan pada motor listrik secara umum ada 2 yaitu baterai lead acid dan
+                        baterai lithium-ion. Untuk memenuhi kebutuhan energi kendaraan listrik, baterai pack dapat
+                        dirangkai secara seri maupun paralel tergantung kebutuhan.
+                    </p>
+                    <h3>Konfigurasi Tegangan Baterai</h3>
+                    <table>
+                        <tr>
+                            <th>Tegangan</th>
+                            <th>Konfigurasi</th>
+                        </tr>
+                        <tr>
+                            <td>36V</td>
+                            <td>
+                                <ul>
+                                    <li>Disusun dari 3 modul baterai 12V secara seri</li>
+                                    <li>Disusun dari 11 atau 12 sel baterai jenis LFP</li>
+                                    <li>Disusun dari 10 sel baterai jenis Lithium-ion MNC</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>60V</td>
+                            <td>
+                                <ul>
+                                    <li>Disusun dari 5 modul baterai 12V secara seri</li>
+                                    <li>Disusun dari 20 sel baterai jenis lithium ferro phosphate</li>
+                                    <li>Disusun dari 15 atau 16 sel baterai jenis Lithium-ion MNC</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <p>
+                        Baterai jenis lead acid masih digunakan pada kendaraan listrik karena ketersediaan yang banyak
+                        dan harga yang relatif murah, namun baterai jenis ini mempunyai beberapa kelemahan diantaranya berat baterai dan jarak tempuh yang pendek. Pilihan berikutnya ada pada baterai
+                        jenis lithium-ion yang sudah banyak digunakan pada kendaraan lsitrik dikarenakan memiliki
+                        performa baterai yang lebih baik, ringan dengan jarak tempuh yang lebih jauh serta usia pakai
+                        lebih lama dibanding baterai lead acid.
+                    </p>
+                    <p>
+                        Baterai jenis lithium-ion mempunyai performa yang bagus, tetapi sangat rawan dari kerusakan
+                        jika menerima tegangan berlebih (over charge) dan berada pada tegangan rendah (over
+                        discharge) saat digunakan. Oleh karena itu baterai jenis lhitium-ion harus dirangkai dengan
+                        Bateray Manajemen System (BMS), yang berfungsi memonitor dan menjaga kondisi sel baterai
+                        dari tegangan berlebih baik over charge maupun over discharge. Baterai pack pada motor listrik dapat diisi ulang langsung dari jaringan listrik 220V AC melalui
+                        adaptor pengisian yang merubah tegangan AC ke DC, atau model penukaran dengan baterai yang
+                        siap digunakan (menggunakan model swap baterai).
+                    </p>
                 </div>
 
                 <!-- Rangkaian -->
                 <div class="battery-stringing">
-                    <h3>Rangkai</h3>
-                    <p class="battery-info">Simulasi Merangkai Baterai</p>
+                    <h3>Simulasi Merangkai Baterai</h3>
+                    <p class="battery-info">
+                        Baterai pack merupakan kumpulan dari sel-sel baterai dan atau modul-modul baterai yang
+                        disusun bersama-sama untuk membentuk satu kesatuan yang lebih besar. Baterai pack bisa
+                        terdiri dari puluhan, ataupun ratusan sel baterai yang dihubungkan bersama dalam berbagai
+                        konfigurasi untuk mencapai kapasitas dan tegangan kerja kendaraan listrik /motor listrik. Secara
+                        umum level tegangan nominal pada battery pack motor listrik adalah : 36V, 48V, 60V, 72V,
+                        96V,114V.</p>
 
                     <div class="battery-controls">
                         <button class="button blue" id="btn-seri">Tambah Seri</button>
