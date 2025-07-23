@@ -154,6 +154,15 @@ document.getElementById('bms-detail').addEventListener('click', function () {
     modal.classList.add('show');
 });
 
+document.getElementById('wheel-detail').addEventListener('click', function () {
+    const modal = document.getElementById('popupModal');
+    const iframe = document.getElementById('modal-iframe');
+
+    iframe.src = 'pages/Wheel.html';
+    modal.classList.add('show');
+});
+
+
 
 document.querySelector('.modal .close').addEventListener('click', function () {
     const modal = document.getElementById('popupModal');
