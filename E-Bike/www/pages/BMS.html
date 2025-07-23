@@ -14,53 +14,38 @@
             <div class="bms-detail-contractor">
                 <div class="bms-info">
                     <p>
-                        BMS baterai adalah sistem kontrol elektronik yang mengelola baterai kendaraan listrik untuk
-                        memastikan beroperasi dengan aman dan efisien. BMS dirancang dengan fungsi sebagai berikut :
+                        BMS (Battery Management System) adalah sistem kontrol elektronik untuk menjaga baterai kendaraan listrik tetap aman dan efisien. Fungsinya:
                     </p>
                     <ul>
                         <li>
-                            <strong>Kontrol temperatur baterai</strong><br>
-                            Baterai lithium-ion memiliki kepadatan energi yang lebih tinggi (yaitu 100–265 Wh/kg). 
-                            Baterai ini memiliki risiko terbakar dalam keadaan yang tidak biasa, sehingga temperatur harus 
-                            selalu terjaga dan tidak boleh terlalu panas.
+                            <strong>Kontrol suhu</strong><br>
+                            Mencegah baterai terlalu panas.
                         </li>
 
                         <li>
                             <strong>Kontrol tegangan</strong><br>
-                            Baterai lithium-ion bekerja paling baik jika berada pada Status Pengisian Daya (SOC) antara 
-                            batas pengisian minimum dan maksimum pada karakteristik baterai. SOC minimum saat 
-                            pemakaian (discharging), dan SOC maksimum saat pengisian (charging).
+                            Menjaga pengisian dalam batas aman (SOC).
                         </li>
 
                         <li>
                             <strong>Balancer</strong><br>
-                            Tegangan masing-masing sel dijaga agar selalu seimbang (sama). Ketidakseimbangan antar sel 
-                            terjadi akibat siklus pengisian/pengosongan baterai yang terjadi terus menerus. Kapasitas 
-                            baterai akan berada pada kapasitas sel yang paling kecil. BMS dengan active balancer 
-                            menyeimbangkan kapasitas antar sel tersebut.
+                            Menyeimbangkan tegangan antar sel.
                         </li>
 
                         <li>
-                            <strong>Pemantauan Kesehatan Baterai</strong><br>
-                            BMS memantau data untuk mengetahui kesehatan baterai (suhu, tegangan, arus, dll.) untuk 
-                            memperkirakan SOC dan SOH baterai. SOC untuk menentukan seberapa jauh kendaraan dapat 
-                            melaju sebelum perlu diisi ulang. SOH mengukur kondisi baterai saat ini dibandingkan dengan 
-                            kapasitas aslinya untuk menentukan waktu penggantian baterai. SOC dan SOH dihitung dalam 
-                            prosentase dan dimunculkan sebagai indikator baterai dalam satuan jam atau km pemakaian.
+                            <strong>Monitoring kesehatan</strong><br>
+                            Memantau SOC (sisa daya) dan SOH (kondisi baterai).
                         </li>
 
                         <li>
                             <strong>Komunikasi</strong><br>
-                            BMS juga dapat berkomunikasi dengan ECU lain dalam kendaraan. Parameter-parameter baterai 
-                            yang ada dalam BMS digunakan untuk mengontrol motor dan memberikan informasi kepada 
-                            pengguna atau teknisi untuk keperluan perbaikan.
+                           Mengirim data ke ECU dan pengguna.
                         </li>
                     </ul>
                     
                 </div>
                 <div class="bms-3d">
                     <div class="bms-3d-container" id="bms-3d-container"></div>
-                    <button class="button" id="pecah-bms">Rincian</button>
                 </div>
             </div>
          </div>

@@ -333,6 +333,80 @@ function initDCController3D() {
     animate();
 }
 
+function bms3d() {
+    const detailContainer = document.getElementById('bms-3d-container');
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xffffff);
+
+    const camera = new THREE.PerspectiveCamera(
+        75,
+        detailContainer.clientWidth / detailContainer.clientHeight,
+        0.1,
+        1000
+    );
+    camera.position.set(6, 2, 25);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(detailContainer.clientWidth, detailContainer.clientHeight);
+    detailContainer.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(10, 10, 10);
+    scene.add(light);
+
+    const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+    pointLight.position.set(0, 0, 10);
+    scene.add(pointLight);
+
+    const ambient = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambient);
+
+    let mixer;
+    let action;
+    const clock = new THREE.Clock();
+
+    const loader = new THREE.GLTFLoader();
+    loader.load('../assets/models/bmsReadyver2.glb', function(gltf) {
+        const model = gltf.scene;
+        model.rotation.y = THREE.MathUtils.degToRad(-60);
+        model.rotation.x = 1;
+        model.scale.set(2,2,2);
+        scene.add(model);
+
+        mixer = new THREE.AnimationMixer(model);
+        const animations = gltf.animations;
+
+        if (animations && animations.length) {
+            action = mixer.clipAction(animations[0]);
+            action.setLoop(THREE.LoopOnce);
+            action.clampWhenFinished = true;
+            action.enabled = true;
+
+            document.getElementById('pecah-bms').addEventListener('click', () => {
+                action.reset();
+                action.play();
+            });
+        }
+
+    }, undefined, function(error) {
+        console.error('An error occurred while loading the GLTF model:', error);
+    });
+
+    function animate() {
+        requestAnimationFrame(animate);
+        const delta = clock.getDelta();
+        if (mixer) mixer.update(delta);
+        controls.update();
+        renderer.render(scene, camera);
+    }
+
+    animate();
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     if (document.getElementById('battery-3d-container')) {
         initBattery3D();
@@ -347,6 +421,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (document.getElementById('dc-controller-3d-container')) {
         initDCController3D();
+    }
+    if (document.getElementById('bms-3d-container')) {
+        bms3d();
     }
 });
 
